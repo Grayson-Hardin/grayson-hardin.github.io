@@ -1,46 +1,39 @@
-const newTask = document.querySelector('#new-task-input');
-const addTaskBtn = document.querySelector('.add-task-btn');
-const removeCompleteBtn = document.querySelector('.remove-complete-btn');
-const taskList = document.querySelector('.task-list');
-const taskTemplate = document.querySelector('#task-template');
-let id = 1
+import * as THREE from '../../libs/three.js-r132/build/three.module.js';
+
+document.addEventListener("DOMContentLoaded", () =>{
+    const scene = new THREE.Scene();
+
+    const geometry = new THREE.BoxGeometry(1,1,1); 
+    const material = new THREE.MeshBasicMaterial({color: "#0000FF"});
+    const cube = new THREE.Mesh(geometry, material);
+
+    scene.add(cube);
+    cube.position.set(0, 0, -2);
+    cube.rotation.set(0, Math.PI/4, 0);
+
+    const camera = new THREE.PerspectiveCamera();
+    camera.position.set(1, 1, 5);
 
 
-newTask.addEventListener('keyup', (e) => {
-    if (e.keyCode === 13 && inputValid()) {
-        addTask();
-    }
-});
+    const renderer = new THREE.WebGLRenderer({alpha: true});
+    renderer.setSize(500, 500);
+    renderer.render(scene, camera);
 
-addTaskBtn.addEventListener('click', () => {
-    if (inputValid()) {
-        addTask();
-    }
-});
 
-removeCompleteBtn.addEventListener('click', () => {
-    const tasks = document.querySelectorAll('.task');
-    tasks.forEach(task => {
-        const checked = task.querySelector('input').checked;
-        if (checked) {
-            task.remove();
-        }
+
+    const video = document.createElement("Video");
+    navigator.mediaDevices.getUserMedia({video: true}).then((stream) =>{
+        video.srcObject = stream;
+        video.play();
     })
+
+    video.style.position = "absoulte";
+    video.style.width = renderer.domElement.width
+    video.style.height = renderer.domElement.height
+    renderer.domElement.style.position = "absolute"
+
+
+    document.body.appendChild(video)
+    document.body.appendChild(renderer.domElement)
+
 });
-
-function addTask() {
-    const taskElement = document.importNode
-        (taskTemplate.content, true);
-    const checkbox = taskElement.querySelector('input');
-    checkbox.id = id;
-    const label = taskElement.querySelector('label');
-    label.htmlFor = id;
-    label.append(newTask.value);
-    taskList.appendChild(taskElement);
-    newTask.value = '';
-    id++;
-}
-
-function inputValid() {
-    return newTask.value !== ''
-}
