@@ -7,20 +7,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const mindarThree = new window.MINDAR.IMAGE.MindARThree({
             container: document.body,
                   imageTargetSrc: './assets/targets/LT-square.mind'
-            //imageTargetSrc: './assets/targets/musicband.mind',
+
         });
         const { renderer, scene, camera } = mindarThree
 
         const light = new THREE.HemisphereLight(0xffffff, 0xbbbbff, 1);
         scene.add(light)
-
-
-        // Blue square 
-
-        // const geometry = new THREE.PlaneGeometry(1, 1);
-        // const material = new THREE.MeshBasicMaterial({color: 0x0000ff, transparent: true, opacity: 5});
-        // const plane = new THREE.Mesh(geometry, material);
-
 
         const raccoon = await loadGLTF('./assets/models/musicband-raccoon/scene.gltf');
         raccoon.scene.scale.set(0.1, 0.1, 0.1);
@@ -28,13 +20,9 @@ document.addEventListener('DOMContentLoaded', () => {
         raccoon.scene.userData.clickable = true;
 
         const anchor = mindarThree.addAnchor(0);
-        // anchor.group.add(plane); 
         anchor.group.add(raccoon.scene)
 
 
-
-
-        // audio 
         const audioClip = await loadAudio('./assets/sounds/musicband-drum-set.mp3');
 
         const listerner = new THREE.AudioListener();
@@ -45,10 +33,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         audio.setRefDistance(100);
         audio.setBuffer(audioClip);
-       // audio.setLoop(true); enable this to loop audio...
-
-
-        // user interaction
 
         document.body.addEventListener("click", (e) => {
            const mouseX =  (e.clientX / window.innerWidth) * 2 - 1;
@@ -74,18 +58,6 @@ document.addEventListener('DOMContentLoaded', () => {
           }
         });
 
-
-
-
-        // handles when target is located
-        // anchor.onTargetFound = () => {
-        //     audio.play();
-        // }
-        // anchor.onTargetLost = () => {
-        //     audio.pause();
-        // }
-
-        // animations
 
         const mixer = new THREE.AnimationMixer(raccoon.scene);
         const action = mixer.clipAction(raccoon.animations[0]);
