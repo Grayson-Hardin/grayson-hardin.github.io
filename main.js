@@ -22,17 +22,20 @@ document.addEventListener('DOMContentLoaded', () => {
         // const plane = new THREE.Mesh(geometry, material);
 
 
-        const gltf = await loadGLTF('./assets/models/musicband-raccoon/scene.gltf');
-        gltf.scene.scale.set(0.1, 0.1, 0.1);
-        gltf.scene.position.set(0, -0.4, 0);
+        const raccoon = await loadGLTF('./assets/models/musicband-raccoon/scene.gltf');
+        raccoon.scene.scale.set(0.1, 0.1, 0.1);
+        raccoon.scene.position.set(0, -0.4, 0);
+        raccoon.scene.userData.clickable = true;
 
         const anchor = mindarThree.addAnchor(0);
         // anchor.group.add(plane); 
-        anchor.group.add(gltf.scene)
+        anchor.group.add(raccoon.scene)
 
 
 
-        const audioClip = await loadAudio('./assets/sounds/musicband-background.mp3');
+
+        // audio 
+        const audioClip = await loadAudio('./assets/sounds/musicband-drum-set.mp3');
 
         const listerner = new THREE.AudioListener();
         const audio = new THREE.PositionalAudio(listerner);
@@ -42,26 +45,50 @@ document.addEventListener('DOMContentLoaded', () => {
 
         audio.setRefDistance(100);
         audio.setBuffer(audioClip);
-        audio.setLoop(true);
+       // audio.setLoop(true); enable this to loop audio...
+
+
+        // user interaction
+
+        document.body.addEventListener("click", (e) => {
+           const mouseX =  (e.clientX / window.innerWidth) * 2 - 1;
+           const mouseY =  -1 * ((e.clientY / window.innerHeight) * 2 - 1);
+           const mouse = new THREE.Vector2(mouseX, mouseY);
+
+           const raycaster = new THREE.Raycaster();
+           raycaster.setFromCamera(mouse, camera);
+
+          const intersects = raycaster.intersectObjects(scene.children, true);
+
+          if (intersects.length > 0){
+            let o = intersects[0].object;
+            while (o.parent && !o.userData.clickable){
+                o = o.parent;
+            }
+
+            if (o.userData.clickable){
+                if (o == raccoon.scene);{
+                audio.play()
+                }
+            }
+          }
+        });
+
 
 
 
         // handles when target is located
-        anchor.onTargetFound = () => {
-            audio.play();
-        }
-        anchor.onTargetLost = () => {
-            audio.pause();
+        // anchor.onTargetFound = () => {
+        //     audio.play();
+        // }
+        // anchor.onTargetLost = () => {
+        //     audio.pause();
+        // }
 
-        }
+        // animations
 
-
-
-
-        // gltf.animations
-
-        const mixer = new THREE.AnimationMixer(gltf.scene);
-        const action = mixer.clipAction(gltf.animations[0]);
+        const mixer = new THREE.AnimationMixer(raccoon.scene);
+        const action = mixer.clipAction(raccoon.animations[0]);
         action.play();
         const clock = new THREE.Clock();
 
@@ -69,7 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
         renderer.setAnimationLoop(() => {
             const delta = clock.getDelta();
 
-            gltf.scene.rotation.set(0, gltf.scene.rotation.y + delta, 0)
+            raccoon.scene.rotation.set(0, raccoon.scene.rotation.y + delta, 0)
             mixer.update(delta);
             renderer.render(scene, camera);
         });
