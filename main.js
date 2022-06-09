@@ -1,12 +1,13 @@
-import { loadGLTF } from "./libs/loader.js";
+import { loadGLTF, loadAudio } from "./libs/loader.js";
+
 const THREE = window.MINDAR.IMAGE.THREE
 
 document.addEventListener('DOMContentLoaded', () => {
     const start = async () => {
         const mindarThree = new window.MINDAR.IMAGE.MindARThree({
             container: document.body,
-            //      imageTargetSrc: './assets/targets/LT-square.mind'
-            imageTargetSrc: './assets/targets/musicband.mind',
+                  imageTargetSrc: './assets/targets/LT-square.mind'
+            //imageTargetSrc: './assets/targets/musicband.mind',
         });
         const { renderer, scene, camera } = mindarThree
 
@@ -30,12 +31,38 @@ document.addEventListener('DOMContentLoaded', () => {
         anchor.group.add(gltf.scene)
 
 
+
+        const audioClip = await loadAudio('./assets/sounds/musicband-background.mp3');
+
+        const listerner = new THREE.AudioListener();
+        const audio = new THREE.PositionalAudio(listerner);
+
+        anchor.group.add(audio);
+        camera.add(listerner);
+
+        audio.setRefDistance(100);
+        audio.setBuffer(audioClip);
+        audio.setLoop(true);
+
+
+
+        // handles when target is located
+        anchor.onTargetFound = () => {
+            audio.play();
+        }
+        anchor.onTargetLost = () => {
+            audio.pause();
+
+        }
+
+
+
+
         // gltf.animations
 
         const mixer = new THREE.AnimationMixer(gltf.scene);
         const action = mixer.clipAction(gltf.animations[0]);
         action.play();
-
         const clock = new THREE.Clock();
 
         await mindarThree.start();
