@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>GeoAR.js demo</title>
@@ -9,37 +10,29 @@
     <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
     <script src="https://unpkg.com/aframe-extras@3.3.0/dist/aframe-extras.min.js"></script>
 
-  </head>
+</head>
 
-  <body style="margin: 0; overflow: hidden;">
-    <a-scene
-      vr-mode-ui="enabled: false"
-      arjs="sourceType: webcam; videoTexture: true; debugUIEnabled: false;"
-      renderer="antialias: true; alpha: true;"
-    >   
+<body style="margin: 0; overflow: hidden;">
+    <a-scene vr-mode-ui="enabled: false" arjs="sourceType: webcam; videoTexture: true; debugUIEnabled: false;"
+        renderer="antialias: true; alpha: true;">
         <a-camera gps-camera rotation-reader> </a-camera>
-        
+
         <!-- <a-box gps-entity-place="latitude: 41.656270173836894; longitude: -93.74536727320258;" material='color: red' scale='600 600 600'></a-box>
         <a-box gps-entity-place="latitude: 41.5694848; longitude: -93.7361408;" material='color: red' scale='600 600 600'></a-box>  -->
 
-        <a-assets 
-            gps-entity-place="latitude: 41.656270173836894; longitude: -93.74536727320258;">
+        <a-assets gps-entity-place="latitude: 41.656270173836894; longitude: -93.74536727320258;">
 
             <!--
               Model source: https://sketchfab.com/3d-models/triceratops-d16aabe33dc24f8ab37e3df50c068265
               Model author: https://sketchfab.com/VapTor
               Model license: Sketcfab Standard
             -->
-            <a-asset-item 
-                id="triceratops"
-                src="https://cdn.aframe.io/examples/ar/models/triceratops/scene.gltf"
-                response-type="arraybuffer" 
-                crossorigin="anonymous" />
-
+            
+            <a-asset-item id="triceratops" src="https://cdn.aframe.io/examples/ar/models/triceratops/scene.gltf"
+                response-type="arraybuffer" crossorigin="anonymous" />
         </a-assets>
 
-        <a-assets 
-            gps-entity-place="latitude: 41.5694848; longitude: -93.7361408;">
+        <a-assets gps-entity-place="latitude: 41.5694848; longitude: -93.7361408;">
 
             <!--
             Model source: https://sketchfab.com/3d-models/triceratops-d16aabe33dc24f8ab37e3df50c068265
@@ -47,14 +40,12 @@
             Model license: Sketcfab Standard
             -->
 
-            <a-asset-item 
-                id="triceratops"
-                src="https://cdn.aframe.io/examples/ar/models/triceratops/scene.gltf"
-                response-type="arraybuffer" 
-                crossorigin="anonymous" />    
+            <a-asset-item id="triceratops" src="https://cdn.aframe.io/examples/ar/models/triceratops/scene.gltf"
+                response-type="arraybuffer" crossorigin="anonymous" />
         </a-assets>
 
 
     </a-scene>
-  </body>
+</body>
+
 </html>
