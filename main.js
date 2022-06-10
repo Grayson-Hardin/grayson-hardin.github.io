@@ -1,3 +1,4 @@
+import { loadGLTF} from "./libs/loader.js";
 const THREE = window.MINDAR.FACE.THREE;
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -12,13 +13,26 @@ document.addEventListener('DOMContentLoaded', () => {
         transparent: true, opacity: 0.5})
         const sphere = new THREE.Mesh(geometry, material);
 
-        const anchor = mindarThree.addAnchor(1);
+       // const anchor = mindarThree.addAnchor(1);
         anchor.group.add(sphere);
+
+
+
+        const light = new THREE.HemisphereLight(0xffffff, 0xbbbbff, 1);
+        scene.add(light);
+
+        const glasses = await loadGLTF('./assets/models/glasses1/scene.gltf');
+
+        glasses.scene.scale.multiplyScalar(0.01);
+
+        const anchor = mindarThree.addAnchor(168)
+        anchor.group.add(glasses.scene);
+
+
 
         document.querySelector("#switch").addEventListener("click", () => {
             mindarThree.switchCamera();
         });
-
 
         await mindarThree.start();
         renderer.setAnimationLoop(() => {
