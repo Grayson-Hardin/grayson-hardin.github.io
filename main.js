@@ -17,9 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const anchor = mindarThree.addAnchor(1);
         anchor.group.add(sphere);
 
-
-
-        document.querySelector("#change_camera").addEventListener("click", () =>{
+        document.querySelector("#switch").addEventListener("click", () => {
             mindarThree.switchCamera();
         })
 
