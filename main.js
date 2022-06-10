@@ -1,4 +1,5 @@
-import { loadGLTF} from "./libs/loader.js";
+// Displays 3D glasses / camera switching
+
 const THREE = window.MINDAR.FACE.THREE;
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -8,26 +9,13 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         const { renderer, scene, camera } = mindarThree;
 
-        // const geometry = new THREE.SphereGeometry(0.1, 32, 16);
-        // const material = new THREE.MeshBasicMaterial({color: 0x00ffff,
-        // transparent: true, opacity: 0.5})
-        // const sphere = new THREE.Mesh(geometry, material);
+        const geometry = new THREE.SphereGeometry(0.1, 32, 16);
+        const material = new THREE.MeshBasicMaterial({color: 0x00ffff,
+        transparent: true, opacity: 0.5})
+        const sphere = new THREE.Mesh(geometry, material);
 
-       // const anchor = mindarThree.addAnchor(1);
-       // anchor.group.add(sphere);
-
-
-
-        const light = new THREE.HemisphereLight(0xffffff, 0xbbbbff, 1);
-        scene.add(light);
-
-        const glasses = await loadGLTF('./assets/models/glasses1/scene.gltf');
-
-        glasses.scene.scale.multiplyScalar(0.01);
-
-        const anchor = mindarThree.addAnchor(168);
-        anchor.group.add(glasses.scene);
-
+       const anchor = mindarThree.addAnchor(1);
+       anchor.group.add(sphere);
 
 
         document.querySelector("#switch").addEventListener("click", () => {
@@ -41,6 +29,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     start();
 });
+
+
+
+// ----- This displays a 3D model that spins and plays an audio file when clicked -----
 
 
 
