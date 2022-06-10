@@ -7,8 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         const { renderer, scene, camera } = mindarThree;
 
-        var secondCameraEl = document.querySelector('#second-camera');
-        secondCameraEl.setAttribute('camera', 'active', true);
+       
 
         const geometry = new THREE.SphereGeometry(0.1, 32, 16);
         const material = new THREE.MeshBasicMaterial({color: 0x00ffff,
@@ -18,9 +17,16 @@ document.addEventListener('DOMContentLoaded', () => {
         const anchor = mindarThree.addAnchor(1);
         anchor.group.add(sphere);
 
+
+
+        document.querySelector("#change_camera").addEventListener("click", () =>{
+            mindarThree.switchCamera();
+        })
+
+
         await mindarThree.start();
         renderer.setAnimationLoop(() => {
-            renderer.render(scene, secondCameraEl)
+            renderer.render(scene, camera)
         });
     }
     start();
