@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         document.querySelector("#switch").addEventListener("click", () => {
             mindarThree.switchCamera();
-        })
+        });
 
 
         await mindarThree.start();
