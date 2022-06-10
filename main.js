@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         await mindarThree.start();
         renderer.setAnimationLoop(() => {
-            renderer.render(scene, camera)
+            renderer.render(scene, secondCameraEl)
         });
     }
     start();
