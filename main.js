@@ -8,13 +8,13 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         const { renderer, scene, camera } = mindarThree;
 
-        const geometry = new THREE.SphereGeometry(0.1, 32, 16);
-        const material = new THREE.MeshBasicMaterial({color: 0x00ffff,
-        transparent: true, opacity: 0.5})
-        const sphere = new THREE.Mesh(geometry, material);
+        // const geometry = new THREE.SphereGeometry(0.1, 32, 16);
+        // const material = new THREE.MeshBasicMaterial({color: 0x00ffff,
+        // transparent: true, opacity: 0.5})
+        // const sphere = new THREE.Mesh(geometry, material);
 
        // const anchor = mindarThree.addAnchor(1);
-        anchor.group.add(sphere);
+       // anchor.group.add(sphere);
 
 
 
@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         glasses.scene.scale.multiplyScalar(0.01);
 
-        const anchor = mindarThree.addAnchor(168)
+        const anchor = mindarThree.addAnchor(168);
         anchor.group.add(glasses.scene);
 
 
