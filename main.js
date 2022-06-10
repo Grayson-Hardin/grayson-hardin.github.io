@@ -7,8 +7,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         const { renderer, scene, camera } = mindarThree;
 
-       
-
         const geometry = new THREE.SphereGeometry(0.1, 32, 16);
         const material = new THREE.MeshBasicMaterial({color: 0x00ffff,
         transparent: true, opacity: 0.5})
