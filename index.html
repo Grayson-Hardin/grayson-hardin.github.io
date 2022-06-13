@@ -15,11 +15,17 @@
       embedded
       arjs="sourceType: webcam; debugUIEnabled: false;"
     >
+
+  <a-entity>
       <a-text
-        value="Noggin Dude!"
-        look-at="[gps-camera]"
-        scale="50 50 50"
-      ></a-text>
+          position = "10 20 0"
+          value="Noggin Dude!"
+          scale="50 50 50"
+          look-at="[gps-camera]"
+    ></a-text>
+  </a-entity>
+
+
       <a-camera gps-camera rotation-reader> </a-camera>
     </a-scene>
   </body>
