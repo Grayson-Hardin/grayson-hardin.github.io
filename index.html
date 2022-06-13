@@ -21,21 +21,25 @@
 
         <a-camera gps-camera rotation-reader> </a-camera>
 
+
         <a-asset id="raccoon" src="assets/models/musicband-raccoon/scene.gltf"></a-asset>
-        <a-entity 
-        gltf-model="#raccoon" 
-        scale="1 1 1"
-        gps-entity-place="latitude: < 41.73195949031577>; longitude: <-93.60036441341543>;"></a-entity> 
-        </a-scene>
+        <a-entity gltf-model="#raccoon"></a-entity>
+
+
+        <a-box value="#raccoon" look-at="[gps-camera]" scale="50 50 50"
+            gps-entity-place="latitude: <41.73195949031577>; longitude: <-93.60036441341543>;">
+        </a-box>
+
+
+    </a-scene>
 </body>
 
-</html> 
+</html>
 
 
 <!-- My Cords -->
 <!-- gps-entity-place="latitude: <41.656270173836894>; longitude: <-93.74536727320258>;"  -->
 
 
-
 <!-- Far away cords -->
-    <!-- gps-entity-place="latitude: < 41.73195949031577>; longitude: <-93.60036441341543>;"></a-entity> -->
+<!-- gps-entity-place="latitude: < 41.73195949031577>; longitude: <-93.60036441341543>;"></a-entity> -->
