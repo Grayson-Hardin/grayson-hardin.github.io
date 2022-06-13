@@ -14,29 +14,25 @@
 
 
     <!-- Grayson Cords -->
-    <a-entity>
-      <a-text value="Yo yo!" scale="50 50 50" look-at="[gps-camera]"
+    <!-- <a-entity>
+      <a-text 
+        value="Yo yo!" 
+        scale="50 50 50" 
+        look-at="[gps-camera]"
         gps-entity-place="latitude: 41.656270173836894; longitude: -93.74536727320258;">
       </a-text>
-    </a-entity>
+    </a-entity> -->
 
-    <a-asset id="raccoon" src="assets/models/musicband-raccoon/scene.gltf"></a-asset>
-    <a-entity gltf-model="#raccoon" scale=".01 .01 .01" gps-entity-place="latitude: 41.656270173836894; longitude: -93.74536727320258;"></a-entity>
-
-
-    <!-- Nate Cords -->
-    <a-entity>
-      <a-text value="What's up!" scale="50 50 50" look-at="[gps-camera]"
-        gps-entity-place="latitude: 41.574009; longitude: 93.940781;">
-      </a-text>
-    </a-entity>
-
-
-    <!-- Austin Cords -->
-    <a-entity>
-      <a-text value="Yo dude!" scale="50 50 50" look-at="[gps-camera]"
-        gps-entity-place="latitude: 41.77766168206724; longitude: -102.00377575064093;">
-      </a-text>
+    <a-asset 
+      id="raccoon" 
+      src="assets/models/musicband-raccoon/scene.gltf">
+    </a-asset>
+    
+    <a-entity 
+      gltf-model="#raccoon" 
+      scale=".01 .01 .01"
+      look-at="[gps-camera]" 
+      gps-entity-place="latitude: 41.656270173836894; longitude: -93.74536727320258;">
     </a-entity>
 
     <a-camera gps-camera rotation-reader> </a-camera>
