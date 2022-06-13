@@ -22,15 +22,15 @@
         <a-camera gps-camera rotation-reader> </a-camera>
 
 
-        <a-asset id="raccoon" src="assets/models/musicband-raccoon/scene.gltf"></a-asset>
-        <a-entity gltf-model="#raccoon"></a-entity>
+        <a-asset 
+            id="raccoon" 
+            src="assets/models/musicband-raccoon/scene.gltf">
+        </a-asset>
 
-
-        <a-box value="#raccoon" look-at="[gps-camera]" scale="15 15 15"
-            gps-entity-place="latitude: <41.73195949031577>; longitude: <-93.60036441341543>;">
-        </a-box>
-
-
+        <a-entity 
+            gltf-model="#raccoon">
+        </a-entity>
+        
     </a-scene>
 </body>
 
