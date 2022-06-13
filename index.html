@@ -42,6 +42,17 @@
   </a-scene>
 </body>
 
+
+<body style="margin: 0; overflow: hidden;">
+  <a-scene vr-mode-ui="enabled: false" \embedded arjs="sourceType: webcam; debugUIEnabled: false;">
+
+
+    <a-asset id="raccoon" src="assets/models/musicband-raccoon/scene.gltf"></a-asset>
+    <a-entity gltf-model="#raccoon" scale="1 1 1" gps-entity-place="latitude: 41.656270173836894; longitude: -93.74536727320258;"></a-entity>
+
+    <a-camera gps-camera rotation-reader> </a-camera>
+  </a-scene>
+</body>
 </html>
 
 
