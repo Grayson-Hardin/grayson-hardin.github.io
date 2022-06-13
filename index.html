@@ -12,15 +12,8 @@
 
 <body style="margin: 0; overflow: hidden;">
     <a-scene vr-mode-ui="enabled: false" embedded arjs="sourceType: webcam; debugUIEnabled: false;">
-        <!-- <a-text
-        value="This content will always face you."
-        look-at="[gps-camera]"
-        scale="50 50 50"
-        gps-entity-place="latitude: <add-your-latitude>; longitude: <add-your-longitude>;"
-      ></a-text> -->
-
+  
         <a-camera gps-camera rotation-reader> </a-camera>
-
 
         <a-asset 
             id="raccoon" 
@@ -30,14 +23,13 @@
         <a-entity 
             gltf-model="#raccoon"
             scale="1 1 1"
-            gps-entity-place="latitude: 41.73195949031577; longitude: -93.60036441341543;">
+            gps-entity-place="latitude: 41.62679116757926; longitude: -100.48718921518018;">
         </a-entity>
 
     </a-scene>
 </body>
-
+›
 </html>
-
 
 <!-- My Cords -->
 <!-- gps-entity-place="latitude: <41.656270173836894>; longitude: <-93.74536727320258>;"  -->
