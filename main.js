@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const initialize = async() => {
         const arButton = document.querySelector("#ar-button");
 
-        const supported = navigator.xr && await navigator.xr.isSupported("immersive-ar");
+        const supported = navigator.xr && await navigator.xr.isSessionSupported("immersive-ar");
 
         if (supported){
             arButton.textContent = "Not Suppported";
