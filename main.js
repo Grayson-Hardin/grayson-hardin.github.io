@@ -1,4 +1,3 @@
-import { loadGLTF} from "./libs/loader.js";
 import * as THREE from './libs/three.js-r132/build/three.module.js';
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -35,6 +34,8 @@ document.addEventListener('DOMContentLoaded', () => {
         scene.add(light);
 
 
+
+        // Button and Session
         let currentSession = null;
         const start = async() => {
             let currentSession = await navigator.xr.requestSession("immersive-ar", {optionalFeatures: ['dom-overlay'], domOverlay: {root: document.body}});
@@ -66,5 +67,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
     initialize();
 });
