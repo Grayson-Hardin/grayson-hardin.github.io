@@ -12,7 +12,19 @@
         arjs='sourceType: webcam; videoTexture: true; debugUIEnabled: false;'
         renderer='antialias: true; alpha: true'>
             <a-camera gps-projected-camera rotation-reader></a-camera>
-            <a-box gps-projected-entity-place='latitude: 41.656270173836894; longitude: -93.74536727320258' material='color: red' scale='10 10 10'></a-box>
+            <a-asset> 
+              <a-asset-item 
+                  id="raccoon" 
+                  src="assets/models/musicband-raccoon/scene.gltf"> 
+              </a-asset-item>    
+          </a-asset> 
+          
+          <a-entity
+                  gltf-model="#raccoon"
+                  scale='3 3 3'
+                  gps-projected-entity-place='latitude: 41.656270173836894; longitude: -93.74536727320258'>
+          </a-entity>
+  
         </a-scene>
     </body>
 </html>
