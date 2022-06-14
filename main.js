@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const supported = navigator.xr && await navigator.xr.isSessionSupported("immersive-ar");
 
-        if (supported){
+        if (!supported) {
             arButton.textContent = "Not Suppported";
             arButton.disabled = "true";
             return;
