@@ -19,11 +19,20 @@ document.addEventListener('DOMContentLoaded', () => {
         renderer.setPixelRatio(window.devicePixelRatio);
         document.body.appendChild(renderer.domElement);
 
-        const geometry = new THREE.BoxGeometry(0.06, 0.06, 0.06);
-        const material = new THREE.MeshBasicMaterial({color: 0x00ff00});
-        const mesh = new THREE.Mesh(geometry, material);
-        mesh.position.set(0, 0, -0.3);
-        scene.add(mesh);
+        const raccoon = await loadGLTF('./assets/models/musicband-raccoon/scene.gltf');
+        raccoon.scene.scale.set(0.1, 0.1, 0.1);
+        raccoon.scene.position.set(0, -0.4, 0);
+        raccoon.scene.userData.clickable = true;
+
+        scene.add(raccoon);
+
+       
+
+        // const geometry = new THREE.BoxGeometry(0.06, 0.06, 0.06);
+        // const material = new THREE.MeshBasicMaterial({color: 0x00ff00});
+        // const mesh = new THREE.Mesh(geometry, material);
+        // mesh.position.set(0, 0, -0.3);
+        // scene.add(mesh);
 
         const light = new THREE.HemisphereLight(0xffffff, 0xbbbbff, 1);
         scene.add(light);
