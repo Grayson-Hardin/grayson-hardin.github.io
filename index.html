@@ -5,22 +5,12 @@
   <script type="module" src="./main.js"></script>
   <style>
     body {margin: 0}
-    #events {
-      position: absoulte;
-      right: 0;
-      top: 0;
-      height: 30vh;
-      padding: 10px;
-      width: 50vw;
-      overflow: auto;
-      background: white;
-      z-index: 1001;
-    }
+
+    #ar-button {position: fixed; z-index: 1001; padding: 1vh; bottom: 1vh; left: 50%; transform: translateX(-50%)}
   </style>
 </head>
 
 <body>
-  <textarea id="events"></textarea>  
+  <button id="ar-button">Start</button>
 </body>
 </html>
-

@@ -1,11 +1,20 @@
+import { loadGLTF} from "./libs/loader.js";
 import * as THREE from './libs/three.js-r132/build/three.module.js';
-import {ARButton} from './libs/three.js-r132/examples/jsm/webxr/ARButton.js';
-
-
 
 document.addEventListener('DOMContentLoaded', () => {
     const initialize = async() => {
-        
+
+        const arButton = document.querySelector("#ar-button");
+
+        const supported = navigator.xr && await navigator.xr.isSessionSupported("immersive-ar");
+
+
+        // Validate browser is supported
+        if (!supported) {
+            arButton.textContent = "Not Suppported";
+            arButton.disabled = "true";
+            return;
+        }
         const scene = new THREE.Scene();
         const camera = new THREE.PerspectiveCamera();
         const renderer = new THREE.WebGL1Renderer({alpha: true});
@@ -13,6 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
         renderer.setSize(window.innerWidth, window.innerHeight);
         renderer.setPixelRatio(window.devicePixelRatio);
         document.body.appendChild(renderer.domElement);
+
 
         // Object
         const geometry = new THREE.BoxGeometry(0.06, 0.06, 0.06);
@@ -25,29 +35,36 @@ document.addEventListener('DOMContentLoaded', () => {
         scene.add(light);
 
 
-        renderer.xr.enabled = true;
-        renderer.setAnimationLoop(() => {
-            renderer.render(scene, camera);
+        let currentSession = null;
+        const start = async() => {
+            let currentSession = await navigator.xr.requestSession("immersive-ar", {optionalFeatures: ['dom-overlay'], domOverlay: {root: document.body}});
+
+            renderer.xr.enabled = true;
+            renderer.xr.setReferenceSpaceType('local');
+            await renderer.xr.setSession(currentSession);
+
+            arButton.textContent = "End";
+
+            renderer.setAnimationLoop(() => {
+                renderer.render(scene, camera);
+            });
+        }
+
+        const end = async() => {
+            currentSession.end();
+            renderer.clear();
+            renderer.setAnimationLoop(null);
+            
+            arButton.style.display = "none";
+        }
+
+        arButton.addEventListener("click", () => {
+            if (currentSession){
+                end();
+            } else {
+                start();
+            }
         });
-
-
-        const controller = renderer.xr.getController(0);
-
-        const events = document.querySelector("#events");
-        controller.addEventListener("selectstart", () => {
-           events.prepend("select start \n");
-        });
-
-        controller.addEventListener("selectend", () => {
-            events.prepend("select end\n");
-         });
-
-         controller.addEventListener("select", () => {
-            events.prepend("select \n");
-         });
-
-        const  arButton = ARButton.createButton(renderer, {optionalFeatures: ['dom-overlay'], domOverlay: {root: document.body}});
-        document.body.appendChild(arButton);
     }
     initialize();
 });
