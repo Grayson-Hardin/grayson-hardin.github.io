@@ -1,9 +1,8 @@
 import * as THREE from './libs/three.js-r132/build/three.module.js';
 
-document.addEventListener('DOMContentLoaded', () =>{
+document.addEventListener('DOMContentLoaded', () => {
     const initialize = async() => {
         const arButton = document.querySelector("#ar-button");
-
 
         const supported = navigator.xr && await navigator.xr.isSupported("immersive-ar");
 
@@ -23,10 +22,11 @@ document.addEventListener('DOMContentLoaded', () =>{
         const geometry = new THREE.BoxGeometry(0.06, 0.06, 0.06);
         const material = new THREE.MeshBasicMaterial({color: 0x00ff00});
         const mesh = new THREE.Mesh(geometry, material);
-        mesh.position.set(0,0, -0.3);
+        mesh.position.set(0, 0, -0.3);
+        scene.add(mesh);
 
         const light = new THREE.HemisphereLight(0xffffff, 0xbbbbff, 1);
-        scene.add(mesh);
+        scene.add(light);
 
 
         let currentSession = null;
@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () =>{
 
             arButton.textContent = "End";
 
-            renderer.setAnimationLoop(() =>{
+            renderer.setAnimationLoop(() => {
                 renderer.render(scene, camera);
             });
         }
@@ -49,9 +49,10 @@ document.addEventListener('DOMContentLoaded', () =>{
             renderer.clear();
             renderer.setAnimationLoop(null);
             
-            arButton.getElementsByClassName.display = "none";
+            arButton.style.display = "none";
         }
-        arButton.addEventListener("click", () =>{
+
+        arButton.addEventListener("click", () => {
             if (currentSession){
                 end();
             } else {
