@@ -12,13 +12,14 @@
       <!-- <a-cylinder position="1 0.75 -3" radius="0.5" height="1.5" color="#FFC65D" shadow></a-cylinder> -->
       <!-- <a-plane position="0 0 -4" rotation="-90 0 0" width="4" height="4" color="#7BC8A4" shadow></a-plane> -->
 
-      <a-box gps-entity-place="latitude: 41.15838546030136; longitude: -93.59176158837336;" rotation="0 45 0" color="#4CC3D9" shadow></a-box>
-
-      <a-sky color="#ECECEC"></a-sky>
-
-      <a-entity movement-controls="fly: true">
+  
+      <!-- <a-entity movement-controls="fly: true">
         <a-entity camera position="0 1.6 0" look-controls></a-entity>
-      </a-entity>
+      </a-entity> -->
+
+      <a-cylinder gps-entity-place="latitude: 41.15838546030136; longitude: -93.59176158837336;" radius="0.5" height="1.5" color="#FFC65D" shadow></a-cylinder>
+      <a-sky color="#ECECEC"></a-sky>
+      <a-camera gps-camera rotation-reader></a-camera>
 
     </a-scene>
   </body>
@@ -26,11 +27,11 @@
 
 
 
-41.15838546030136, -93.59176158837336
+<!-- 41.15838546030136, -93.59176158837336
 
 
 
-41.15832891660982, -93.59179712764208
+41.15832891660982, -93.59179712764208 -->
 <!-- My Cords -->
 <!-- gps-entity-place="latitude: <41.656270173836894>; longitude: <-93.74536727320258>;"  -->
 
