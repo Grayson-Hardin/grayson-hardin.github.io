@@ -34,7 +34,6 @@ document.addEventListener('DOMContentLoaded', () => {
         scene.add(light);
 
 
-
         // Button and Session
         let currentSession = null;
         const start = async() => {
@@ -67,6 +66,5 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
-
     initialize();
 });
