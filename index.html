@@ -1,26 +1,48 @@
-<html lang="en">
-<head>
-  <meta=name="viewport" content="width=device-widthm initial-scale=1.0">
-  <script type="module" src="./main.js"></script>
-  <style>
-    body {
-      margin: 0
-    }
+<!DOCTYPE html>
+<html>
 
-    #ar-button {
-      position: fixed;
-      z-index: 1001;
-      padding: 2vh;
-      bottom: 5vh;
-      left: 50%;
-      transform: translateX(-50%);
-      font-size: 25px;
-      border: 2px solid black;
-    }
-  </style>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Location-based AR.js demo</title>
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
 </head>
 
-  <body>
-    <button id="ar-button">Start</button>
-  </body>
+<body style="margin: 0; overflow: hidden;">
+    <!-- <a-scene vr-mode-ui="enabled: false" embedded arjs="sourceType: webcam; debugUIEnabled: false;">
+  
+        <a-camera gps-camera rotation-reader> </a-camera>
+
+        <a-asset 
+            id="raccoon" 
+            src="assets/models/musicband-raccoon/scene.gltf">
+        </a-asset>
+
+        <a-entity 
+            gltf-model="#raccoon"
+            scale="50 50 50"
+            gps-entity-place="latitude: 41.656270173836894; longitude: -93.74536727320258;">
+        </a-entity>
+
+    </a-scene> -->
+
+    <a-box color="yellow" gps-entity-place="latitude: 41.15835616479186 longitude: -93.59177892002788" position="1 1 1"/>
+</body>
+›
 </html>
+
+
+
+
+<!-- My Cords -->
+<!-- gps-entity-place="latitude: <41.656270173836894>; longitude: <-93.74536727320258>;"  -->
+
+
+<!-- Far away cords -->
+<!-- gps-entity-place="latitude: < 41.73195949031577>; longitude: <-93.60036441341543>;"></a-entity> -->
+
+
+                <!-- gps-entity-place="latitude: 41.574009; longitude: -93.940781;" --
+
