@@ -8,6 +8,9 @@
   <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
   <script src="https://raw.githack.com/jeromeetienne/AR.js/master/aframe/build/aframe-ar.min.js"></script>
   <script src="https://raw.githack.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
+  <script>
+    THREEx.ArToolkitContext.baseURL = 'https://raw.githack.com/jeromeetienne/ar.js/master/three.js/'
+  </script>
 </head>
 
 <body style='margin: 0; overflow: hidden;'>
@@ -16,20 +19,16 @@
 
     <a-camera gps-camera rotation-reader></a-camera>
 
-    <!-- Grayson -->
-    <a-entity gps-entity-place="latitude: 41.1583657709855 longitude: -93.59178572824935">
-      <a-box color="yellow" rotation="0 180 0" scale="5 5 5" />
-    </a-entity>
+    <a-entity gltf-model="./assets/models/magnemite/scene.gltf" rotation="0 180 0" scale="0.15 0.15 0.15"
+      gps-entity-place="latitude: 41.1583657709855; longitude: -93.59178572824935; " animation-mixer />
 
-    <!-- Austin -->
-    <a-entity gps-entity-place="latitude: 41.570310 longitude: -93.738400">
-      <a-box color="yellow" rotation="0 180 0" scale="5 5 5" />
-    </a-entity>
+    <a-entity gltf-model="./assets/models/magnemite/scene.gltf" rotation="0 180 0" scale="0.15 0.15 0.15"
+      gps-entity-place="latitude: 41.570310; longitude: -93.738400; " animation-mixer />
+
   </a-scene>
 </body>
 
 </html>
-
 
 <!-- my cords 41.1583657709855, -93.59178572824935 -->
 <!-- austin cords 41.570310, -93.738400 -->
