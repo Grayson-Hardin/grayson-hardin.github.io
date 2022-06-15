@@ -1,41 +1,41 @@
+
+
+
+
 <!DOCTYPE html>
-
 <html>
-  <head>
-    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
-    <script src="//cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
-  </head>
-  <body>
-    <a-scene>
 
-      <!-- <a-box position="-1 0.5 -3" rotation="0 45 0" color="#4CC3D9" shadow></a-box> -->
-      <!-- <a-sphere position="0 1.25 -5" radius="1.25" color="#EF2D5E" shadow></a-sphere> -->
-      <!-- <a-cylinder position="1 0.75 -3" radius="0.5" height="1.5" color="#FFC65D" shadow></a-cylinder> -->
-      <!-- <a-plane position="0 0 -4" rotation="-90 0 0" width="4" height="4" color="#7BC8A4" shadow></a-plane> -->
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Location-based AR.js demo</title>
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
+</head>
 
-      <!-- <a-entity movement-controls="fly: true">
-        <a-entity camera position="0 1.6 0" look-controls></a-entity>
-      </a-entity> -->
+<body style="margin: 0; overflow: hidden;">
+   <a-scene vr-mode-ui="enabled: false" embedded arjs="sourceType: webcam; debugUIEnabled: false;">
+  
+        <a-camera gps-camera rotation-reader> </a-camera>
 
-      <a-cylinder gps-entity-place="latitude: 41.15838546030136; longitude: -93.59176158837336;" radius="0.5" height="1.5" color="#FFC65D" shadow></a-cylinder>
-      <a-sky color="#ECECEC"></a-sky>
-      <a-camera gps-camera rotation-reader gps-entity-place="latitude: 41.15832891660982; longitude:  -93.59179712764208;"></a-camera>
+         <!-- <a-asset 
+            id="raccoon" 
+            src="assets/models/musicband-raccoon/scene.gltf">
+        </a-asset>
+        <a-entity 
+            gltf-model="#raccoon"
+            scale="50 50 50"
+            gps-entity-place="latitude: 41.656270173836894; longitude: -93.74536727320258;">
+        </a-entity> -->
 
-    </a-scene>
-  </body>
+
+    <a-box color="yellow" gps-entity-place="latitude: 41.15835616479186 longitude: -93.59177892002788" position="1 1 1"/>
+    </a-scene>  
+
+</body>
+›
 </html>
 
 
 
-<!-- 41.15838546030136, -93.59176158837336
-
-41.15832891660982, -93.59179712764208 -->
-<!-- My Cords -->
-<!-- gps-entity-place="latitude: <41.656270173836894>; longitude: <-93.74536727320258>;"  -->
-
-
-<!-- Far away cords -->
-<!-- gps-entity-place="latitude: < 41.73195949031577>; longitude: <-93.60036441341543>;"></a-entity> -->
-
-
-<!-- gps-entity-place="latitude: 41.574009; longitude: -93.940781;" --
