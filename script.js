@@ -42,6 +42,9 @@ function renderPlaces(places) {
            window.dispatchEvent(new CustomEvent('gps-entity-place-loaded'))
        });
 
+       var groupObject3D = document.querySelector('a-entity').object3D;
+        console.log(groupObject3D.parent);
+
        scene.appendChild(model);
    });
 }
