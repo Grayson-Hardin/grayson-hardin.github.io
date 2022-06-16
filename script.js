@@ -36,14 +36,11 @@ function renderPlaces(places) {
        model.setAttribute('gltf-model', './assets/models/magnemite/scene.gltf');
        model.setAttribute('rotation', '0 180 0');
        model.setAttribute('animation-mixer', '');
-       model.setAttribute('scale', '.5 .5 .5');
+       model.setAttribute('scale', '0.15 0.15 0.15');
 
        model.addEventListener('loaded', () => {
            window.dispatchEvent(new CustomEvent('gps-entity-place-loaded'))
        });
-
-       var groupObject3D = document.querySelector('a-entity').object3D;
-        console.log(groupObject3D.parent);
 
        scene.appendChild(model);
    });
