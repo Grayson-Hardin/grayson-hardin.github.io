@@ -1,45 +1,5 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>GeoAR.js demo</title>
-    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
-    <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
-    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
-  </head>
-
-  <body>
-    <a-scene
-      vr-mode-ui="enabled: false"
-      arjs="sourceType: webcam; videoTexture: true; debugUIEnabled: false;"
-    >
-      <a-text
-        value="This content will always face you."
-        look-at="[gps-camera]"
-        scale="120 120 120"
-        gps-entity-place="latitude: <add-your-latitude>; longitude: <add-your-longitude>;"
-      ></a-text>
-      <a-camera gps-camera rotation-reader> </a-camera>
-    </a-scene>
-  </body>
-</html>
-
-
-
-
-
-
-<!-- my cords 41.1583657709855, -93.59178572824935 -->
-
-<!-- 
-1. look into iOS version
-2. a-frame version
-3. -->
-<!-- 
-<!DOCTYPE html>
-<html>
-
 <head>
   <meta charset='utf-8'>
   <meta http-equiv='X-UA-Compatible' content='IE=edge'>
@@ -58,18 +18,24 @@
     arjs='sourceType: webcam;  debugUIEnabled: false;'>
 
     <a-camera gps-camera rotation-reader></a-camera>
-      <a-box gps-entity-place="latitude: 41.370832847812345; longitude: -93.55317467996144; " rotation="0 45 0" color="#4CC3D9" shadow></a-box>
 
-   
+    <a-entity gltf-model="./assets/models/magnemite/scene.gltf" rotation="0 180 0" scale="0.15 0.15 0.15"
+      gps-entity-place="latitude: 41.1583657709855; longitude: -93.59178572824935; " animation-mixer /></a-enity> 
 
-
-      <!-- <a-entity gltf-model="./assets/models/magnemite/scene.gltf" rotation="0 180 0" scale="0.15 0.15 0.15"
-      gps-entity-place="latitude: 41.1583657709855; longitude: -93.59178572824935; " animation-mixer /></a-enity> -->
-
-      <!-- <a-entity gltf-model="./assets/models/magnemite/scene.gltf" scale="0.15 0.15 .015"
-      gps-entity-place="latitude: 41.370832847812345; longitude: -93.55317467996144; "/> </a-enity> -->
+    <!-- <a-entity gltf-model="./assets/models/magnemite/scene.gltf" scale="0.15 0.15 .015"
+      gps-entity-place="latitude: 41.370832847812345; longitude: -93.55317467996144; "/> </a-enity>  -->
     </a-scene>
 
 </body>
 
-</html> -->
+</html> 
+
+
+<!-- Grayson cords 41.1583657709855, -93.59178572824935 -->
+
+<!-- 
+1. look into iOS version
+2. a-frame version
+3. -->
+<!-- 
+
