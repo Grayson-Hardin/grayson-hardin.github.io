@@ -31,24 +31,19 @@ var models = [
         url: './assets/models/magnemite/scene.gltf',
         scale: '0.05 0.05 0.05',
         info: 'Magnemite, Lv. 5, HP 10/10',
-        rotation: '0 180 0',
-        position: '0 0 0',
+     //   rotation: '0 180 0',
     },
     {
         url: './assets/models/articuno/scene.gltf',
         scale: '0.02 0.02 0.02',
-        rotation: '0 180 0',
+     //   rotation: '0 180 0',
         info: 'Articuno, Lv. 80, HP 100/100',
-        position: '1 1 1',
-
     },
     {
         url: './assets/models/dragonite/scene.gltf',
         scale: '0.08 0.08 0.08',
-        rotation: '0 180 0',
+      //  rotation: '0 180 0',
         info: 'Dragonite, Lv. 99, HP 150/150',
-        position: '2 2 2',
-
     },
 ];
 
