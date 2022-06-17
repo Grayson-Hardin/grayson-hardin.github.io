@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!-- Testing -->
 <html>
   <head>
     <meta charset="utf-8" />
@@ -15,15 +14,15 @@
       vr-mode-ui="enabled: false"
       arjs="sourceType: webcam; videoTexture: true; debugUIEnabled: false;">
    
-      <a-plane id='snake' gps-projected-entity-place='latitude: <>; longitude: <>;' color='yellow'></a-plane>
+      <a-plane id='snake' gps-entity-place='latitude: <>; longitude: <>;' color='yellow'></a-plane>
       <a-box id='house'
              gps-projected-entity-place='latitude: <>>; longitude: <>;'
              width='2.5' height='2.5' depth='2.5'
              color='red'>
       </a-box>
-      <a-camera id='cam' gps-projected-camera rotation-reader alert></a-camera>
+      <a-camera id='cam' gps-camera rotation-reader alert></a-camera>
     </a-scene>
   </body>
 </html>
 
-latitude: 41.15833668477462; longitude: -93.59179108760733;
+<!-- latitude: 41.15833668477462; longitude: -93.59179108760733; -->
