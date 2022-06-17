@@ -18,38 +18,15 @@
     <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
     <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
     <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
-    <script>
-      document.addEventListener('DOMContentLoaded', () => {
-        let house = document.querySelector('#house');
-        house.addEventListener('click', (event) => {
-          let banner = document.querySelector('#banner');
-          banner.textContent = 'Clicked';
-          this.color = 'white';
-        });
-      });
-      
-    </script>
   </head>
 
   <body>
-    <div id='banner' width='100%'>
-      Placeholder Text
-    </div>
+   
     <a-scene inspector stats
       vr-mode-ui="enabled: false"
       arjs="sourceType: webcam; videoTexture: true; debugUIEnabled: false;"  
     >
-      <!--
-         Northwest parking lot: 41.656423, -93.746081
-         Southeast parking lot: 41.655728, -93.744009
-         Northeast parking lot: 41.656436, -93.744130
-         Northwest corner: 41.65644683691442, -93.74550270137811
-         Southwest corner: 41.656146961723636, -93.74550270137811
-         Southeast corner: 41.65613957561759, -93.74449830974504
-         Northwest corner 2: 41.65625332155766, -93.74423534891721
-         Southwest corner 2: 41.65584856236529, -93.74424128036388
-         Southeast corner 2: 41.65584856236529, -93.74384387343821
-      -->
+   
       <a-plane id='snake' gps-projected-entity-place='latitude: 41.15833668477462; longitude: -93.59179108760733;' color='yellow'></a-plane>
       <a-box id='house'
              gps-projected-entity-place='latitude: <>>; longitude: <>;'
