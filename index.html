@@ -30,10 +30,14 @@
   })
 </script>
 <a-scene>
-  <a-box position="-1 0.5 -3" rotation="0 45 0" foo color="#4CC3D9"></a-box>
-  <a-sphere position="0 1.25 -5" radius="1.25" color="#EF2D5E"></a-sphere>
-  <a-cylinder position="1 0.75 -3" radius="0.5" height="1.5" color="#FFC65D"></a-cylinder>
-  <a-plane position="0 0 -4" rotation="-90 0 0" width="4" height="4" color="#7BC8A4"></a-plane>
+  <a-box gps-entity-place="longitude: -93.59179328052676; latitude: 41.15832798297468;" rotation="0 45 0" foo color="#4CC3D9"></a-box>
+  <a-sphere gps-entity-place="longitude: -93.59179328052676; latitude: 41.15832798297468;" radius="1.25" color="#EF2D5E"></a-sphere>
+  <a-cylinder gps-entity-place="longitude: -93.59179328052676; latitude: 41.15832798297468;" radius="0.5" height="1.5" color="#FFC65D"></a-cylinder>
+  <a-plane gps-entity-place="longitude: -93.59179328052676; latitude: 41.15832798297468;" rotation="-90 0 0" width="4" height="4" color="#7BC8A4"></a-plane>
   <a-sky color="#ECECEC"></a-sky>
-  <a-camera></a-camera>
+  <a-camera gps-camera rotation-reader></a-camera>
 </a-scene>
+
+
+<!-- 41.15832816932883, -93.59178187471122 -->
+
