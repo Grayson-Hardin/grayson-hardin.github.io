@@ -8,6 +8,26 @@
   <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
   <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
   <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
+  <script>
+    function getLocation() {
+      //Check if Geolocation is supported 
+      if (navigator.geolocation) {
+        //If supported, run the getCurrentPosition() method
+        //If the getCurrentPosition() method is successful, it returns a coordinates object to the function specified in the parameter (showPosition)
+        navigator.geolocation.getCurrentPosition(showPosition);
+      } else {
+        //If not, display a message to the user
+        //x.innerHTML = "Geolocation is not supported by this browser.";
+      }
+
+      //The showPosition() function outputs the Latitude and Longitude
+      function showPosition(position) {
+        // x.innerHTML = "Latitude: " + position.coords.latitude + 
+        // "<br>Longitude: " + position.coords.longitude;
+        return `latitude: ${position.coords.latitude}; longitude: ${position.coords.longitude}`
+      }
+    }
+  </script>
 </head>
 
 <body>
@@ -16,7 +36,7 @@
 
     <a-box 
       id='box' 
-      gps-projected-entity-place='latitude: 41.15833668477462; longitude: -93.59179108760733;' 
+      gps-projected-entity-place='showPosition()'
       width='2.5'
       height='2.5' 
       depth='2.5' 
@@ -26,8 +46,7 @@
     <a-camera 
     id='cam' 
     gps-projected-camera rotation-reader alert
-    41.15833668477462 = featureEasting - originCoordsProjected[0];
-    -93.59179108760733 = -(featureNorthing - originCoordsProjected[1]);>
+    gps-projected-entity-place='showPosition()'
     </a-camera>
 
   </a-scene>
