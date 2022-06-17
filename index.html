@@ -1,37 +1,39 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset='utf-8'>
-    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>GeoAR.js demo</title>
-    <script src='https://aframe.io/releases/0.9.2/aframe.min.js'></script>
-    <script src="https://raw.githack.com/jeromeetienne/AR.js/master/aframe/build/aframe-ar.min.js"></script>
-    <script src="https://raw.githack.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
-    <script>
-        THREEx.ArToolkitContext.baseURL = 'https://raw.githack.com/jeromeetienne/ar.js/master/three.js/'
-    </script>
-</head>
+<script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+<script>
+  // define a custom component
+  AFRAME.registerComponent("foo", {
+    init: function() {
+      // grab the camera
+      var player = document.querySelector("a-camera")
+      // create a direction vector
+      var direction = new THREE.Vector3();
 
-<body style='margin: 0; overflow: hidden;'>
-    <a-scene
-        vr-mode-ui="enabled: true"
-		embedded
-        arjs='sourceType: webcam; debugUIEnabled: false;'>
-        
-        <!-- <a-entity gltf-model="./assets/models/musicband-raccoon/scene.gltf" scale="0.05 0.05 0.05" gps-entity-place="longitude: -93.591714; latitude: 41.158351;" animation-mixer/> -->
-        <!-- <a-entity
-        gltf-model="./assets/models/indoorflower/scene.gltf" scale="1 1 1" gps-entity-place="longitude: -93.591714; latitude: 41.158351;" animation-mixer/> -->
-
-
-        <!-- <a-entity gltf-model="./assets/models/indoorflower/scene.gltf" scale="1 1 1" position="1 1 1"></a-entity> -->
-
-        <!-- <a-entity position="0 0 0" rotation="0 0 0" scake="3 3 3" geometry="primitive: box;"></a-entity> -->
-            <a-box position="0 1 -8" color="#4CC3D9" shadow></a-box>
-
-            <a-entity camera look-controls position="0 0 0"></a-entity>
-              <a-entity id="camera" gps camera look-controls></a-entity>
-            </a-entity>
-
-
-	</a-scene>
-</body>
+      window.addEventListener("keydown", (e) => {
+        if (e.code === "KeyR") {
+          // get the cameras world direction
+          this.el.sceneEl.camera.getWorldDirection(direction);
+          // multiply the direction by a "speed" factor
+          direction.multiplyScalar(0.1)
+          // get the current position
+          var pos = player.getAttribute("position")
+          // add the direction vector
+          pos.add(direction)
+          // set the new position
+          player.setAttribute("position", pos);
+          // !!! NOTE - it would be more efficient to do the
+          // position change on the players THREE.Object:
+          // `player.object3D.position.add(direction)`
+          // but it would break "getAttribute("position")
+        }
+      })
+    }
+  })
+</script>
+<a-scene>
+  <a-box position="-1 0.5 -3" rotation="0 45 0" foo color="#4CC3D9"></a-box>
+  <a-sphere position="0 1.25 -5" radius="1.25" color="#EF2D5E"></a-sphere>
+  <a-cylinder position="1 0.75 -3" radius="0.5" height="1.5" color="#FFC65D"></a-cylinder>
+  <a-plane position="0 0 -4" rotation="-90 0 0" width="4" height="4" color="#7BC8A4"></a-plane>
+  <a-sky color="#ECECEC"></a-sky>
+  <a-camera></a-camera>
+</a-scene>
