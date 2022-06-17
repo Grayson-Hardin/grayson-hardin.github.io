@@ -9,6 +9,9 @@
   <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
   <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
   <script>
+    var latitude;
+    var longitude;
+
     function getLocation() {
       //Check if Geolocation is supported 
       if (navigator.geolocation) {
@@ -19,13 +22,20 @@
         //If not, display a message to the user
         //x.innerHTML = "Geolocation is not supported by this browser.";
       }
+    }
 
-      //The showPosition() function outputs the Latitude and Longitude
-      function showPosition(position) {
-        // x.innerHTML = "Latitude: " + position.coords.latitude + 
-        // "<br>Longitude: " + position.coords.longitude;
-        return `latitude: ${position.coords.latitude}; longitude: ${position.coords.longitude}`
-      }
+    //The showPosition() function outputs the Latitude and Longitude
+    function showPosition(position) {
+      // x.innerHTML = "Latitude: " + position.coords.latitude + 
+      // "<br>Longitude: " + position.coords.longitude;
+      console.log(`latitude: ${position.coords.latitude}; longitude: ${position.coords.longitude}`);
+      latitude = position.coords.latitude;
+      longitude = position.coords.longitude;
+    }
+
+    function getCoords() {
+      return `latitude: ${latitude}; longitude: ${longitude}`
+      console.log('called');
     }
   </script>
 </head>
