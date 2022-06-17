@@ -46,7 +46,7 @@
 
     <a-box 
       id='box' 
-      gps-projected-entity-place='showPosition()'
+      gps-projected-entity-place='getCoords()'
       width='2.5'
       height='2.5' 
       depth='2.5' 
@@ -56,7 +56,7 @@
     <a-camera 
     id='cam' 
     gps-projected-camera rotation-reader alert
-    gps-projected-entity-place='showPosition()'
+    gps-projected-entity-place='getCoords()'
     </a-camera>
 
   </a-scene>
