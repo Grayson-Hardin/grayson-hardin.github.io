@@ -27,7 +27,11 @@
 
         <!-- <a-entity position="0 0 0" rotation="0 0 0" scake="3 3 3" geometry="primitive: box;"></a-entity> -->
             <a-box position="0 0.5 -3" color="#4CC3D9" shadow></a-box>
-        
-        <a-camera gps-camera rotation-reader></a-camera>
+            <a-entity camera look-controls position="0 1.6 0"></a-entity>
+            <a-entity id="rig" position="25 10 0">
+              <a-entity id="camera" camera look-controls></a-entity>
+            </a-entity>
+
+
 	</a-scene>
 </body>
