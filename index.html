@@ -14,20 +14,26 @@
 
   <a-scene vr-mode-ui="enabled: false" arjs="sourceType: webcam; videoTexture: true; debugUIEnabled: false;">
 
-    <a-box 
+    <!-- <a-box 
       id='box' 
       gps-projected-entity-place='latitude: 41.15833668477462; longitude: -93.59179108760733;' 
       width='2.5'
       height='2.5' 
       depth='2.5' 
       color='red'>
-    </a-box>
+    </a-box> -->
+
+    <a-plane id='snake' gps-projected-entity-place='latitude: 41.15833668477462; longitude: -93.59179108760733;' color='yellow'></a-plane>
+    <a-box id='house'
+           gps-projected-entity-place='latitude: 41.15833668477462; longitude: -93.59179108760733;'
+           width='2.5' height='2.5' depth='2.5'
+           color='red'>
 
     <a-camera 
     id='cam' 
     gps-projected-camera rotation-reader alert
-    xWorld = featureEasting - originCoordsProjected[0];
-    zWorld = -(featureNorthing - originCoordsProjected[1]);>
+    41.15833668477462 = featureEasting - originCoordsProjected[0];
+    -93.59179108760733 = -(featureNorthing - originCoordsProjected[1]);>
     </a-camera>
 
   </a-scene>
