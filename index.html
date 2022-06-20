@@ -18,12 +18,17 @@
         <!-- <a-box id='red_box' gps-entity-place='latitude: 41.158421448432996 longitude: -93.59161176516893;' color='red' scale="3 3 3"></a-box> -->
         <a-asset> 
           <a-asset-item 
-              id="lady_bug" 
-              src="assets/models/lady_bug/scene.gltf"
-              scale="3 3 3"
-              gps-entity-place='latitude: 41.158421448432996 longitude: -93.59161176516893;'>
-          </a-asset-item>   
+            id="lady_bug" 
+            src="assets/models/lady_bug/scene.gltf"
+            scale="3 3 3">
+          </a-asset-item>
         </a-asset> 
+
+      <a-entity
+        gltf-model="#lady_bug" 
+        scale="3 3 3"
+        gps-entity-place='latitude: 41.158421448432996 longitude: -93.59161176516893;'>
+    </a-entity>
     </a-scene>
 
   </body>
