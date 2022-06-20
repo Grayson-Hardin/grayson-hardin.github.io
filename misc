@@ -123,6 +123,12 @@
 // // });
 
 
+
+
+
+
+
+
 // ----- This displays a 3D model that spins and plays an audio file when clicked -----
 
 
@@ -204,3 +210,14 @@
 //     start();
 
 // });
+
+
+{/* <html>
+    <head>
+        <script src="./libs/mindar/mindar-image-three.prod.js"></script>
+        <script src="./main.js" type="module"></script>
+    </head>
+    <body>
+        <h1> Web AR </h1>
+    </body>
+</html> */}
