@@ -1,0 +1,11 @@
+Model Information:
+* title:	3December Day 17 Bug
+* source:	https://sketchfab.com/3d-models/3december-day-17-bug-cf5396b6d5ad4f5484761b90086b7e09
+* author:	defnotdan (https://sketchfab.com/defnotdan)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "3December Day 17 Bug" (https://sketchfab.com/3d-models/3december-day-17-bug-cf5396b6d5ad4f5484761b90086b7e09) by defnotdan (https://sketchfab.com/defnotdan) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
