@@ -15,10 +15,21 @@
       arjs="sourceType: webcam; videoTexture: true; debugUIEnabled: false;">
   
       <a-box id='blue_box' gps-entity-place='latitude: 41.15833355453776 longitude: -93.59178899970475;' color='blue' scale="3 3 3"></a-box>
-      <a-box id='red_box' gps-entity-place='latitude: 41.158421448432996 longitude: -93.59161176516893;' color='red' scale="3 3 3"></a-box>
 
       <a-camera id='cam' gps-projected-camera></a-camera>
 
     </a-scene>
+
+
+
+    <a-scene
+    vr-mode-ui="enabled: false"
+    arjs="sourceType: webcam; videoTexture: true; debugUIEnabled: false;">
+
+    <a-box id='red_box' gps-entity-place='latitude: 41.158421448432996 longitude: -93.59161176516893;' color='red' scale="3 3 3"></a-box>
+
+    <a-camera id='cam' gps-projected-camera></a-camera>
+
+  </a-scene>
   </body>
 </html>
