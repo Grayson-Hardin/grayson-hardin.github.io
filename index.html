@@ -8,17 +8,41 @@
     <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
     <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
   </head>
-
   <body>
     <a-scene
-      vr-mode-ui="enabled: false"
+      vr-mode-ui="false"
       arjs="sourceType: webcam; videoTexture: true; debugUIEnabled: false;">
-      <a-camera id='cam' gps-projected-camera rotation-reader></a-camera>
+      <a-camera id='cam' gps-projected-camera rotation-reader></a-camera> 
+      <!-- <a-box id="demo" onclick="myFunction()"  gps-entity-place='latitude: 41.158421448432996 longitude: -93.59161176516893;' color='blue' scale="3 3 3"></a-box> -->
 
-        <!-- <a-box id='red_box' gps-entity-place='latitude: 41.158421448432996 longitude: -93.59161176516893;' color='red' scale="3 3 3"></a-box> -->
+      <!-- <a-box position="-1 0.5 -3" rotation="0 45 0" color="#4CC3D9" shadow
+      animation="startEvents: click; property: position;
+        from: -1 1.5 -3; to: -1 0.5 -3 dur: 1000">
+      
+      </a-box> -->
+       
         <a-asset> 
           <a-asset-item 
-            id="lady_bug" 
+            id="lady_bug"
+            src="assets/models/lady_bug/scene.gltf"
+            scale=".000005 .000005 .000005">
+        </a-asset> 
+
+      <a-entity
+        gltf-model="#lady_bug"
+        scale=".08 .08 .08"
+        position="-1 0.5 -3"
+        rotation="0 45 0"
+        shadow
+        animation="startEvents: click; property: position;
+        from: -1 1.5 -3; to: -1 0.5 -3 dur: 1000">
+    </a-entity>
+    
+    
+    
+    <!-- <a-asset> 
+          <a-asset-item 
+            id="lady_bug"
             src="assets/models/lady_bug/scene.gltf"
             scale=".000005 .000005 .000005">
         </a-asset> 
@@ -26,8 +50,12 @@
       <a-entity
         gltf-model="#lady_bug"
         scale=".08 .08 .08" 
-        gps-entity-place='latitude: 41.158479 longitude: -93.591891;'>
-    </a-entity>
+        gps-entity-place='latitude: 41.158479 longitude: -93.591891;'
+        >
+    </a-entity> -->
+    
+    <a-entity cursor="rayOrigin:mouse"></a-entity>
     </a-scene>
+    
   </body>
 </html>
