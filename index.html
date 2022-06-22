@@ -1,5 +1,72 @@
-<script type="module" src="./main.js"></script>
-<script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>GeoAR.js demo</title>
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
+    <script src="https://unpkg.com/aframe-extras@3.3.0/dist/aframe-extras.min.js"></script>
+</head>
+
+<body>
+  <script type="module" src="./main.js"></script>
+  <script>
+    AFRAME.registerComponent('change-visibility-on-click', {
+      schema: {
+        visible: {default: false}
+      },
+  
+      init: function () {
+        var el = this.el;
+        var data = this.data;
+        var hover = true;
+        var defaultVisibility = el.getAttribute('visible').visible;
+  
+        el.addEventListener('click', async function () {
+          console.log("Clicked!")
+          
+          // Shrink animation
+          let scale = el.getAttribute('scale');
+          console.log("Hello " + el.getAttribute('gps-entity-place'));
+
+          console.log(el.getAttribute('gltf-model'))
+          while(scale.x > 0.10 && el.getAttribute('gltf-model') === 'assets/models/lady_bug/scene.gltf'){
+            console.log(scale);
+            scale.x = scale.x - .01;
+            scale.y = scale.y - .01;
+            scale.z = scale.z - .01;
+            await new Promise(r => setTimeout(r, 50));
+          }
+
+          // Change model
+           hover = false;
+           el.setAttribute('visible', defaultVisibility)
+           el.removeAttribute('gltf-model')
+           el.setAttribute('gltf-model', "#squashed_lady_bug")
+           el.setAttribute('scale', '.5 .5 .5')
+        });
+      }
+    });
+  </script> 
+
+  <a-scene style="margin: 0; overflow: hidden;">
+    <a-camera gps-projected-camera rotation-reader> </a-camera>
+
+    <a-asset>
+      <a-asset-item id="lady_bug" src="assets/models/lady_bug/scene.gltf">
+      <a-asset-item id="squashed_lady_bug" src="assets/models/flat_lady_bug/scene.gltf">
+    </a-asset>
+
+    <a-entity gltf-model="#lady_bug" scale=".5 .5 .5" change-visibility-on-click gps-projected-entity-place="latitude: 41.656270173836894; longitude: -93.74536727320258;"></a-entity>
+    <a-entity cursor="rayOrigin:mouse"></a-entity>
+
+  </a-scene>
+</body>
+</html>
+
+<!-- 
 <body>
   <script>
     AFRAME.registerComponent('change-visibility-on-click', {
@@ -27,6 +94,7 @@
     });
   </script> 
 
+
   <a-scene>
     <a-asset>
       <a-asset-item id="lady_bug" src="assets/models/lady_bug/scene.gltf">
@@ -38,4 +106,4 @@
     <a-entity cursor="rayOrigin:mouse"></a-entity>
     <a-camera></a-camera>
   </a-scene>
-</body>
+</body> -->
