@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -11,99 +12,159 @@
 </head>
 
 <body>
-  <script type="module" src="./main.js"></script>
-  <script>
-    AFRAME.registerComponent('change-visibility-on-click', {
-      schema: {
-        visible: {default: false}
-      },
-  
-      init: function () {
-        var el = this.el;
-        var data = this.data;
-        var hover = true;
-        var defaultVisibility = el.getAttribute('visible').visible;
-  
-        el.addEventListener('click', async function () {
-          console.log("Clicked!")
-          
-          // Shrink animation
-          let scale = el.getAttribute('scale');
-          console.log("Hello " + el.getAttribute('gps-entity-place'));
+    <script>
+        AFRAME.registerComponent('get-user-coords', {
+            update: async function () {
+                var watchID;
+                var geoLoc;
+                function showLocation(position) {
+                    var latitude = position.coords.latitude;
+                    var longitude = position.coords.longitude;
+                    console.log("Latitude : " + latitude + " Longitude: " + longitude);
+                }
 
-          console.log(el.getAttribute('gltf-model'))
-          while(scale.x > 0.10 && el.getAttribute('gltf-model') === 'assets/models/lady_bug/scene.gltf'){
-            console.log(scale);
-            scale.x = scale.x - .01;
-            scale.y = scale.y - .01;
-            scale.z = scale.z - .01;
-            await new Promise(r => setTimeout(r, 50));
-          }
+                function errorHandler(err) {
+                    if (err.code == 1) {
+                        alert("Error: Access is denied!");
+                    } else if (err.code == 2) {
+                        alert("Error: Position is unavailable!");
+                    }
+                }
 
-          // Change model
-           hover = false;
-           el.setAttribute('visible', defaultVisibility)
-           el.removeAttribute('gltf-model')
-           el.setAttribute('gltf-model', "#squashed_lady_bug")
-           el.setAttribute('scale', '.5 .5 .5')
+                function getLocationUpdate() {
+                    if (navigator.geolocation) {
+                        var options = { timeout: 1 };
+                        geoLoc = navigator.geolocation;
+                        watchID = geoLoc.watchPosition(showLocation, errorHandler, options);
+                    } else {
+                        alert("Sorry, browser does not support geolocation!");
+                    }
+                }
+                getLocationUpdate();
+            }
         });
-      }
-    });
-  </script> 
+    </script>
+    <script>
+        AFRAME.registerComponent('change-visibility-on-click', {
+            schema: {
+                visible: { default: false }
+            },
+            init: function () {
+                var el = this.el;
+                var hover = true;
+                var defaultVisibility = el.getAttribute('visible').visible;
+      
+                // Distance of User & Model 
+                var userCords = "latitude: 41.1583361; longitude:  -93.5916825;";
+                var modelCoords = el.getAttribute('gps-projected-entity-place')
 
-  <a-scene style="margin: 0; overflow: hidden;">
-    <a-camera gps-projected-camera rotation-reader> </a-camera>
+                var formatUserCoords = userCords.split(';');
+                var userLatitude = formatUserCoords[0].replace(/^\.|[^-?\d\.]|\.(?=.*\.)|^0+(?=\d)/g, '')
+                var userLongitude = formatUserCoords[1].replace(/^\.|[^-?\d\.]|\.(?=.*\.)|^0+(?=\d)/g, '')
 
-    <a-asset>
-      <a-asset-item id="lady_bug" src="assets/models/lady_bug/scene.gltf">
-      <a-asset-item id="squashed_lady_bug" src="assets/models/flat_lady_bug/scene.gltf">
-    </a-asset>
+                var formatModelCoords = modelCoords.split(';')
+                var modelLatitude = formatModelCoords[0].replace(/^\.|[^-?\d\.]|\.(?=.*\.)|^0+(?=\d)/g, '')
+                var modelLongitude = formatModelCoords[1].replace(/^\.|[^-?\d\.]|\.(?=.*\.)|^0+(?=\d)/g, '')
 
-    <a-entity gltf-model="#lady_bug" scale=".5 .5 .5" change-visibility-on-click gps-projected-entity-place="latitude: 41.158336145024975; longitude: -93.59178250830193;"></a-entity>
-    <a-entity cursor="rayOrigin:mouse"></a-entity>
 
-  </a-scene>
+                // function to convert lat / lon to meters
+                function measure(lat1, lon1, lat2, lon2) {
+                    var R = 6378.137; // Radius of earth in KM
+                    var dLat = lat2 * Math.PI / 180 - lat1 * Math.PI / 180;
+                    var dLon = lon2 * Math.PI / 180 - lon1 * Math.PI / 180;
+                    var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+                        Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
+                        Math.sin(dLon / 2) * Math.sin(dLon / 2);
+                    var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+                    var d = R * c;
+                    return d * 1000; // meters
+                }
+
+                distanceFromObject = measure(userLatitude, userLongitude, modelLatitude, modelLongitude)
+                console.log(distanceFromObject)
+
+
+                // Check whether user is within range
+                if (distanceFromObject < 30) {
+                    el.setAttribute('visible', true)
+                    console.log(el.getAttribute('visible'))
+                    console.log("You are within " + distanceFromObject + " meters of a bug!")
+
+                }
+                else if (distanceFromObject > 30 && distanceFromObject < 100) {
+                    console.log("You are getting closer!")
+                }
+                else {
+                    console.log("You are far away, keep looking!")
+                }
+
+                const listOfEmails = [];
+                el.addEventListener('click', async function () {
+                    console.log("Clicked!")
+
+
+                    // Shrink animation
+                    let scale = el.getAttribute('scale');
+                    console.log(el.getAttribute('gltf-model'))
+                    console.log(el.getAttribute('position'))
+
+                    while (scale.x > 0.10 && el.getAttribute('gltf-model') === 'assets/models/lady_bug/scene.gltf') {
+                        console.log(scale);
+                        scale.x = scale.x - .01;
+                        scale.y = scale.y - .01;
+                        scale.z = scale.z - .01;
+                        await new Promise(r => setTimeout(r, 50));
+                    }
+
+                    // Change model
+                    hover = false;
+                    el.setAttribute('visible', defaultVisibility)
+                    el.removeAttribute('gltf-model')
+                    el.setAttribute('gltf-model', "#squashed_lady_bug")
+                    el.setAttribute('scale', '.5 .5 .5')
+
+                    // Ask, Validate, and Save Email
+                    function validateUserInput() {
+                        let userPrompt = prompt("Please enter your email: ")
+                        console.log(isNaN(userPrompt));
+                        if (userPrompt == "") {
+                            alert("Field cannot be empty");
+                            validateUserInput();
+                        }
+                        else if (isNaN(userPrompt) === false) {
+                            alert("Field cannot be purely numeric");
+                            validateUserInput();
+                        }
+                        else if (confirm("Your email is '" + userPrompt + "' is that correct?")) {
+                            listOfEmails.push(userPrompt)
+                            console.log(listOfEmails)
+                        }
+                        else {
+                            validateUserInput();
+                        }
+                    }
+                    validateUserInput();
+                });
+                
+            }
+        });
+    </script>
+    <a-scene style="margin: 0; overflow: hidden;">
+        <a-camera id='camera' get-user-coords arjs-look-controls='smoothingFactor: 0.1'
+            gps-projected-camera='gpsMinDistance: 5' rotation-reader> </a-camera>
+
+        <a-asset>
+            <a-asset-item id="lady_bug" src="assets/models/lady_bug/scene.gltf">
+                <a-asset-item id="squashed_lady_bug" src="assets/models/flat_lady_bug/scene.gltf">
+        </a-asset>
+
+        <!-- Grayson's Coords -->
+        <a-entity gltf-model="#lady_bug" visible="false" scale=".5 .5 .5" change-visibility-on-click
+            gps-projected-entity-place="latitude: 41.1583361; longitude:  -93.5916825;" animation="property: rotation; dur: 10000;
+      to: 0 360 0; loop: true"></a-entity>
+
+        <a-entity cursor="rayOrigin:mouse"></a-entity>
+    </a-scene>
+
 </body>
 </html>
-
-<!-- 
-<body>
-  <script>
-    AFRAME.registerComponent('change-visibility-on-click', {
-      schema: {
-        visible: {default: false}
-      },
-  
-      init: function () {
-        var el = this.el;
-        var data = this.data;
-        var defaultVisibility = el.getAttribute('visible').visible;
-  
-        el.addEventListener('click', function () {
-          console.log("Clicked!")
-          el.setAttribute('visible', data.visible);
-          });
-
-        el.addEventListener('mouseleave', function () {
-           console.log("Mouse leave")
-           el.setAttribute('visible', defaultVisibility)
-           el.removeAttribute('gltf-model')
-           el.setAttribute('gltf-model', "#squashed_lady_bug")
-        });
-      }
-    });
-  </script> 
-
-
-  <a-scene>
-    <a-asset>
-      <a-asset-item id="lady_bug" src="assets/models/lady_bug/scene.gltf">
-      <a-asset-item id="squashed_lady_bug" src="assets/models/flat_lady_bug/scene.gltf">
-    </a-asset>
-    <a-entity gltf-model="#lady_bug" scale=".08 .08 .08" change-visibility-on-click position="0 1 -4"></a-entity>
-
-
-    <a-entity cursor="rayOrigin:mouse"></a-entity>
-    <a-camera></a-camera>
-  </a-scene>
-</body> -->
