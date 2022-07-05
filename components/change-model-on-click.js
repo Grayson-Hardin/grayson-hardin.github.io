@@ -10,15 +10,6 @@ AFRAME.registerComponent('change-model-on-click', {
     var userSignedUp = false
     const listOfEmails = [];
 
-
-    if (el.getAttribute('gltf-model') ==='assets/models/flat_lady_bug/scene.gltf'){
-      window.setTimeout(hideSquashLadyBug, 5000);
-
-      function hideSquashLadyBug(){
-        el.setAttribute('visible', false)
-      }
-    }
-
     el.addEventListener('click', async function () {
       console.log("Clicked!")
 
@@ -42,14 +33,6 @@ AFRAME.registerComponent('change-model-on-click', {
       el.setAttribute('gltf-model', "#squashed_lady_bug")
       el.setAttribute('scale', '.5 .5 .5')
       
-      // Hides squashed bug after 5 seconds
-      // myTimeout = setTimeout(hideSquashLadyBug, 5000);
-
-      // Ask, Validate, and Save Email
-      // if (userSignedUp == false) {
-      //   validateUserInput();
-      // }
-
       // function validateUserInput() {
       //   let userPrompt = prompt("Please enter your email: ")
       //   console.log(isNaN(userPrompt));
@@ -71,5 +54,13 @@ AFRAME.registerComponent('change-model-on-click', {
       //   }
       // }
     });
+    if (el.getAttribute('gltf-model') ==='assets/models/flat_lady_bug/scene.gltf'){
+      window.setTimeout(hideSquashLadyBug, 5000);
+
+      function hideSquashLadyBug(){
+        el.setAttribute('visible', false)
+      }
+    }
+
   }
 });
