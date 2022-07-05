@@ -11,7 +11,7 @@ AFRAME.registerComponent('toggle-visibility', {
   
       this.el.sceneEl.addEventListener('user-coords-update', (event) => {
           var isVisible = determineVisibility(event.detail.coords.latitude, event.detail.coords.longitude);
-          if (isVisible) {
+          if (isVisible && el.getAttribute('gltf-model') === 'assets/models/lady_bug/scene.gltf') {
             el.emit('visibility-change', true); 
             el.setAttribute('visible', true);
             console.log("Visibility is ", isVisible)
