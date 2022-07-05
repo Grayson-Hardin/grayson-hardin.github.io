@@ -18,7 +18,7 @@ AFRAME.registerComponent('change-model-on-click', {
       console.log(el.getAttribute('gltf-model'))
       console.log(el.getAttribute('position'))
 
-      while (scale.x > 0.10 && el.getAttribute('gltf-model') === 'assets/models/lady_bug/scene.gltf') {
+      while (scale.x > 0.10 && el.getAttribute('gltf-model') != 'assets/models/flat_lady_bug/scene.gltf') {
         console.log(scale);
         scale.x = scale.x - .01;
         scale.y = scale.y - .01;
@@ -33,7 +33,7 @@ AFRAME.registerComponent('change-model-on-click', {
       el.setAttribute('gltf-model', "#squashed_lady_bug")
       el.setAttribute('scale', '.5 .5 .5')
 
-      if (el.getAttribute('gltf-model') ==='assets/models/flat_lady_bug/scene.gltf'){
+      if (el.getAttribute('gltf-model') === 'assets/models/flat_lady_bug/scene.gltf'){
         window.setTimeout(hideSquashLadyBug, 5000);
   
         function hideSquashLadyBug(){
