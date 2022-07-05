@@ -33,11 +33,6 @@ AFRAME.registerComponent('change-model-on-click', {
       el.removeAttribute('gltf-model')
       el.setAttribute('gltf-model', "#squashed_lady_bug")
       el.setAttribute('scale', '.5 .5 .5')
-      myTimeout = setTimeout(hideSquashLadyBug, milliseconds);
-
-      function hideSquashLadyBug(){
-        el.setAttribute('visible', false)
-      }
 
       // Ask, Validate, and Save Email
       if (userSignedUp == false) {
@@ -63,6 +58,14 @@ AFRAME.registerComponent('change-model-on-click', {
         else {
           validateUserInput()
         }
+      }
+
+
+      // Hides squashed bug after 5 seconds 
+      myTimeout = setTimeout(hideSquashLadyBug, 5000);
+
+      function hideSquashLadyBug(){
+        el.setAttribute('visible', false)
       }
     });
   }
