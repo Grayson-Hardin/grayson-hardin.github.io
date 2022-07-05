@@ -10,7 +10,6 @@ AFRAME.registerComponent('change-model-on-click', {
     var userSignedUp = false
     const listOfEmails = [];
 
-
     el.addEventListener('click', async function () {
       console.log("Clicked!")
 
@@ -33,40 +32,46 @@ AFRAME.registerComponent('change-model-on-click', {
       el.removeAttribute('gltf-model')
       el.setAttribute('gltf-model', "#squashed_lady_bug")
       el.setAttribute('scale', '.5 .5 .5')
-
-      // Ask, Validate, and Save Email
-      if (userSignedUp == false) {
-        validateUserInput();
-      }
-
-      function validateUserInput() {
-        let userPrompt = prompt("Please enter your email: ")
-        console.log(isNaN(userPrompt));
-        if (userPrompt == "") {
-          alert("Field cannot be empty");
-          validateUserInput();
-        }
-        else if (isNaN(userPrompt) === false) {
-          alert("Field cannot be purely numeric");
-          validateUserInput();
-        }
-        else if (confirm("Your email is '" + userPrompt + "' is that correct?")) {
-          userSignedUp = true
-          listOfEmails.push(userPrompt)
-          console.log(listOfEmails)
-        }
-        else {
-          validateUserInput()
-        }
-      }
+      
 
 
-      // Hides squashed bug after 5 seconds 
-      myTimeout = setTimeout(hideSquashLadyBug, 5000);
+      // Hides squashed bug after 5 seconds
+      // myTimeout = setTimeout(hideSquashLadyBug, 5000);
+
+      window.setTimeout(hideSquashLadyBug, 5000);
 
       function hideSquashLadyBug(){
         el.setAttribute('visible', false)
       }
+
+
+
+
+      // Ask, Validate, and Save Email
+      // if (userSignedUp == false) {
+      //   validateUserInput();
+      // }
+
+      // function validateUserInput() {
+      //   let userPrompt = prompt("Please enter your email: ")
+      //   console.log(isNaN(userPrompt));
+      //   if (userPrompt == "") {
+      //     alert("Field cannot be empty");
+      //     validateUserInput();
+      //   }
+      //   else if (isNaN(userPrompt) === false) {
+      //     alert("Field cannot be purely numeric");
+      //     validateUserInput();
+      //   }
+      //   else if (confirm("Your email is '" + userPrompt + "' is that correct?")) {
+      //     userSignedUp = true
+      //     listOfEmails.push(userPrompt)
+      //     console.log(listOfEmails)
+      //   }
+      //   else {
+      //     validateUserInput()
+      //   }
+      // }
     });
   }
 });
