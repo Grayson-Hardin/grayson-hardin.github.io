@@ -1,31 +1,31 @@
-function getPosition(point){
-    // point is geolocation, point = {latitude:'123.xx',longitude:'37.xx'}
-    const camera = document.querySelector('[gps-camera]').components['gps-camera'];
-    let position = { x: 0, y: 0, z: 0 };
-
-        // update position.x
-    let dstCoords = {
-        longitude: point.longitude,
-        latitude: camera.currentCoords.latitude,
-    };
-
-    position.x = camera.computeDistanceMeters(camera.currentCoords, dstCoords);
-    position.x *= point.longitude > camera.currentCoords.longitude ? 1 : -1;
-
-    // update position.z
-    dstCoords = {
-        longitude: camera.currentCoords.longitude,
-        latitude: point.latitude,
-    };
-
-    position.z = camera.computeDistanceMeters(camera.currentCoords, dstCoords);
-    position.z *= point.latitude > camera.currentCoords.latitude ? -1 : 1;
-
-    if (position.y !== 0) {
-        let altitude = camera.currentCoords.altitude !== undefined ? camera.currentCoords.altitude : 0;
-        position.y = position.y - altitude;
+AFRAME.registerComponent('get-user-coords', {
+    init: async function () {
+      var geoLoc;
+      var el = this.el;
+  
+      watchLocation();
+  
+      function watchLocation() {
+        if (navigator.geolocation) {
+          var options = { timeout: 1 };
+          geoLoc = navigator.geolocation;
+          geoLoc.watchPosition(updateLocation, errorHandler, options);
+        } else {
+          alert("Sorry, browser does not support geolocation!");
+        }
+      }
+  
+      function updateLocation(position) {
+        el.emit('user-coords-update', {coords: position.coords});
+      }
+  
+      function errorHandler(err) {
+        if (err.code == 1) {
+          alert("Error: Access is denied!");
+        } else if (err.code == 2) {
+          alert("Error: Position is unavailable!");
+        }
+      }
     }
-    
-    //return position = { x: x, y: y, z: z }
-    return position;
-}
+  });
+  
