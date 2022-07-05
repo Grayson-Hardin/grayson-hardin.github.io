@@ -10,6 +10,14 @@ AFRAME.registerComponent('change-model-on-click', {
     var userSignedUp = false
     const listOfEmails = [];
 
+    if (el.getAttribute('gltf-model') === 'assets/models/flat_lady_bug/scene.gltf'){
+      window.setTimeout(hideSquashLadyBug, 5000);
+
+      function hideSquashLadyBug(){
+        el.setAttribute('visible', false)
+      }
+    }
+
     el.addEventListener('click', async function () {
       console.log("Clicked!")
 
@@ -55,12 +63,5 @@ AFRAME.registerComponent('change-model-on-click', {
       // }
 
     });
-    if (el.getAttribute('gltf-model') === 'assets/models/flat_lady_bug/scene.gltf'){
-      window.setTimeout(hideSquashLadyBug, 5000);
-
-      function hideSquashLadyBug(){
-        el.setAttribute('visible', false)
-      }
-    }
   }
 });
