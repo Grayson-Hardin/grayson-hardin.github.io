@@ -11,6 +11,8 @@
   <script src="https://unpkg.com/aframe-extras@3.3.0/dist/aframe-extras.min.js"></script>
   <script src="./components/get-user-coords.js"></script> 
   <script src="./components/change-model-on-click.js"></script>
+  <script src="./components/toggle-visibility.js"></script>
+
 </head>
 
 <body>
@@ -27,43 +29,9 @@
 
 
     <!-- Grayson's Coords -->
-    <a-entity gltf-model="#lady_bug" visible="false" scale=".5 .5 .5" change-model-on-click
+    <a-entity gltf-model="#lady_bug" visible="false" scale=".5 .5 .5" change-model-on-click toggle-visibility
       gps-projected-entity-place="latitude: 41.1583361; longitude:  -93.5916825;" animation="property: rotation; dur: 10000;
       to: 0 360 0; loop: true"></a-entity>
-
-
-
-    <!-- in lat long, 4th number from decimial changes position by approx 30 ft. Increase this value on longitude will move object to East and decreasing will move West  -->
-
-    <!-- Nate's Coords -->
-    <!-- sound="src: #tieSound; volume: 2; rolloffFactor: 2; refDistance: 1; autoplay: true; distanceModel: exponential; loop: true" -->
-    <a-entity gltf-model="#lady_bug" visible="false" scale=".5 .5 .5" change-model-on-click 
-      gps-projected-entity-place="latitude: 41.573226; longitude: -93.941149;" animation="property: rotation; dur: 10000;
-      to: 0 360 0; loop: true"></a-entity>
-    <a-entity gltf-model="#lady_bug" visible="false" scale=".5 .5 .5" change-model-on-click
-      gps-projected-entity-place="latitude: 41.573426; longitude: -93.939945;" animation="property: rotation; dur: 10000;
-      to: 0 360 0; loop: true"></a-entity>
-    <a-entity gltf-model="#lady_bug" visible="false" scale=".5 .5 .5" change-model-on-click
-      gps-projected-entity-place="latitude: 41.5737796; longitude: -93.9405622;" animation="property: rotation; dur: 10000;
-      to: 0 360 0; loop: true"></a-entity>
-
-    <!-- Office Coords -->
-    <!-- North -->
-    <!-- <a-entity gltf-model="#lady_bug" scale=".5 .5 .5" change-visibility-on-click
-      gps-projected-entity-place="latitude: 41.6564324; longitude:  -93.7447186;" animation="property: rotation; dur: 10000;
-      to: 0 360 0; loop: true"></a-entity> -->
-    <!-- East -->
-    <!-- <a-entity gltf-model="#lady_bug" scale=".5 .5 .5" change-visibility-on-click
-      gps-projected-entity-place="latitude: 41.6562882; longitude:  -93.7445112;" animation="property: rotation; dur: 10000;
-      to: 0 360 0; loop: true"></a-entity> -->
-    <!-- South -->
-    <!-- <a-entity gltf-model="#lady_bug" scale=".5 .5 .5" change-visibility-on-click
-      gps-projected-entity-place="latitude: 41.6561616; longitude:  -93.7447567;" animation="property: rotation; dur: 10000;
-      to: 0 360 0; loop: true"></a-entity> -->
-    <!-- West -->
-    <!-- <a-entity gltf-model="#lady_bug" scale=".5 .5 .5" change-visibility-on-click
-      gps-projected-entity-place="latitude: 41.6562983; longitude:  -93.7449434;" animation="property: rotation; dur: 10000;
-      to: 0 360 0; loop: true"></a-entity> -->
 
     <a-entity cursor="rayOrigin:mouse"></a-entity>
   </a-scene>
