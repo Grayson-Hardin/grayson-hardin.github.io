@@ -32,14 +32,6 @@ AFRAME.registerComponent('change-model-on-click', {
       el.removeAttribute('gltf-model')
       el.setAttribute('gltf-model', "#squashed_lady_bug")
       el.setAttribute('scale', '.5 .5 .5')
-
-      if (el.getAttribute('gltf-model') === 'assets/models/flat_lady_bug/scene.gltf'){
-        window.setTimeout(hideSquashLadyBug, 5000);
-  
-        function hideSquashLadyBug(){
-          el.setAttribute('visible', false)
-        }
-      }
       
       // function validateUserInput() {
       //   let userPrompt = prompt("Please enter your email: ")
@@ -61,6 +53,14 @@ AFRAME.registerComponent('change-model-on-click', {
       //     validateUserInput()
       //   }
       // }
+
     });
+    if (el.getAttribute('gltf-model') === 'assets/models/flat_lady_bug/scene.gltf'){
+      window.setTimeout(hideSquashLadyBug, 5000);
+
+      function hideSquashLadyBug(){
+        el.setAttribute('visible', false)
+      }
+    }
   }
 });
