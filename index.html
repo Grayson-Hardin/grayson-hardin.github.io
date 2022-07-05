@@ -17,10 +17,11 @@
 <body>
   
   <a-scene style="margin: 0; overflow: hidden;">
+     <!-- old camera settings -->
     <!-- <a-camera id='camera' get-user-coords arjs-look-controls='smoothingFactor: 0.1'
       gps-projected-camera='gpsMinDistance: 1; gpsTimeInterval: 0' rotation-reader> </a-camera> -->
 
-      <a-camera id='camera' look-controls-enabled='false' arjs-look-controls='smoothingFactor: 0.1' gps-projected-camera='gpsMinDistance: 5' rotation-reader get-user-coords> </a-camera>
+    <a-camera id='camera' look-controls-enabled='false' arjs-look-controls='smoothingFactor: 0.1' gps-projected-camera='gpsMinDistance: 5' rotation-reader get-user-coords> </a-camera>
 
     <a-asset>
       <a-asset-item id="lady_bug" src="assets/models/lady_bug/scene.gltf">
@@ -30,16 +31,14 @@
 
 
     <!-- Grayson's Coords -->
-    <!-- <a-entity gltf-model="#lady_bug" visible="false"  toggle-visibility scale=".5 .5 .5" change-model-on-click
-      gps-projected-entity-place="latitude: 41.1583361; longitude:  -93.5916825;" animation="property: rotation; dur: 10000;
-      to: 0 360 0; loop: true"></a-entity>
-    <a-entity cursor="rayOrigin:mouse"></a-entity> -->
-
     <a-entity gltf-model="#lady_bug" visible="false"  toggle-visibility scale=".5 .5 .5" change-model-on-click
     gps-projected-entity-place="latitude: 41.158485; longitude:  -93.591937;" animation="property: rotation; dur: 10000;
     to: 0 360 0; loop: true"></a-entity>
-  <a-entity cursor="rayOrigin:mouse"></a-entity>
 
+    <a-entity gltf-model="#lady_bug" visible="false"  toggle-visibility scale=".5 .5 .5" change-model-on-click
+    gps-projected-entity-place="latitude: 41.158448; longitude:  -93.591723;" animation="property: rotation; dur: 10000;
+    to: 0 360 0; loop: true"></a-entity>
+  <a-entity cursor="rayOrigin:mouse"></a-entity>
   </a-scene>
 </body>
 
