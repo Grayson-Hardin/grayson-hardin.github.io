@@ -33,7 +33,7 @@ AFRAME.registerComponent('toggle-visibility', {
         var distanceFromObject = metersBetween(userLatitude, userLongitude, modelLatitude, modelLongitude);
         console.log("distance between is", distanceFromObject, " meters")
         console.log("user:", userLatitude, userLongitude, "model:", modelLatitude, modelLongitude)
-        return distanceFromObject < 5;
+        return distanceFromObject <= 8;
       }
   
       // moved because it was not detecting metersBetween in the main.js file
