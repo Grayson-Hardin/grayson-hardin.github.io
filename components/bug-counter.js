@@ -1,4 +1,4 @@
-AFRAME.registerComponent('score-counter', {
+AFRAME.registerComponent('bug-counter', {
   schema: {
     el: {
       type: 'selector'
@@ -15,7 +15,7 @@ AFRAME.registerComponent('score-counter', {
 
     sceneEl.querySelector('a-entity').addEventListener('click', () => {
       this.data.score++;
-      var newScore = 'Score: ' + this.data.score
+      var newScore = 'Bugs Found: ' + this.data.score
       scoreBoard.setAttribute('text', 'value',  newScore)
     })
   }

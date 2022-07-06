@@ -16,26 +16,39 @@
 </head>
 
 <body>
-  <a-scene score-counter style="margin: 0; overflow: hidden;" vr-mode-ui="enabled: false">
+  <a-scene bug-counter style="margin: 0; overflow: hidden;" vr-mode-ui="enabled: false">
 
-    <a-camera id='camera' look-controls-enabled='false' arjs-look-controls='smoothingFactor: 0.5'
-      gps-projected-camera='gpsMinDistance: 3' rotation-reader get-user-coords>
+
+    <a-camera id='camera' get-user-coords arjs-look-controls='smoothingFactor: 0.1'
+      gps-projected-camera='gpsMinDistance: 1' rotation-reader>       
       <a-text id="score" scale=".3 .3 .3" position="-.9 -.7 -2" value="Bugs Found: 0" color="#fff"></a-text>
+      <a-image src="#lady_bug_icon" scale=".2 .2 .2" position="-1.5 -1.05 -3"></a-image>
     </a-camera>
 
     <a-asset>
-      <a-asset-item id="lady_bug" src="assets/models/lady_bug/scene.gltf">
+      <img id="lady_bug_icon" src="assets/pictures/lady_bug_icon.png">
+      <!-- <a-asset-item id="lady_bug" src="assets/models/lady_bug/scene.gltf">
+      <a-asset-item id="squashed_lady_bug" src="assets/models/flat_lady_bug/scene.gltf"> -->
+      <audio id="squishSound" src="./assets/squishSound.mp3"></audio>
     </a-asset>
-
 
     <a-entity>
       <!-- Grayson Coords -->
-      <a-entity gltf-model="#lady_bug" visible="false" toggle-visibility scale=".5 .5 .5" 
+      <a-entity gltf-model="#lady_bug" visible="true" toggle-visibility scale=".5 .5 .5" 
         change-model-on-click gps-projected-entity-place="latitude: 41.1583361; longitude:  -93.5916825" animation="property: rotation; dur: 10000;
         to: 0 360 0; loop: true"></a-entity>
-      <a-entity gltf-model="#lady_bug" visible="false" toggle-visibility scale=".5 .5 .5" 
+      <a-entity gltf-model="#lady_bug" visible="true" toggle-visibility scale=".5 .5 .5" 
         change-model-on-click gps-projected-entity-place="latitude: 41.1583361; longitude:  -93.5917825" animation="property: rotation; dur: 10000;
         to: 0 360 0; loop: true"></a-entity>
+
+    <!-- Brandon's Coords -->
+    <a-entity id="loto-lake" gltf-model="#lady_bug" visible="false" toggle-visibility
+              gps-projected-entity-place="latitude: 38.080182; longitude:  -92.821941;" animation="property: rotation; dur: 10000; to: 0 360 0; loop: true">
+    </a-entity>
+
+    <a-entity id="loto-dock" gltf-model="#lady_bug"  visible="false" toggle-visibility
+              gps-projected-entity-place="latitude: 38.080136; longitude:  -92.821914;">
+    </a-entity>
 
 
       <!-- Nate's Coords -->
@@ -52,21 +65,21 @@
 
       <!-- Office Coords -->
       <!-- North -->
-      <!-- <a-entity gltf-model="#lady_bug" scale=".5 .5 .5" change-visibility-on-click
+      <a-entity gltf-model="#lady_bug" scale=".5 .5 .5" change-visibility-on-click
       gps-projected-entity-place="latitude: 41.6564324; longitude:  -93.7447186;" animation="property: rotation; dur: 10000;
-      to: 0 360 0; loop: true"></a-entity> -->
+      to: 0 360 0; loop: true"></a-entity>
       <!-- East -->
-      <!-- <a-entity gltf-model="#lady_bug" scale=".5 .5 .5" change-visibility-on-click
+      <a-entity gltf-model="#lady_bug" scale=".5 .5 .5" change-visibility-on-click
       gps-projected-entity-place="latitude: 41.6562882; longitude:  -93.7445112;" animation="property: rotation; dur: 10000;
-      to: 0 360 0; loop: true"></a-entity> -->
+      to: 0 360 0; loop: true"></a-entity>
       <!-- South -->
-      <!-- <a-entity gltf-model="#lady_bug" scale=".5 .5 .5" change-visibility-on-click
+      <a-entity gltf-model="#lady_bug" scale=".5 .5 .5" change-visibility-on-click
       gps-projected-entity-place="latitude: 41.6561616; longitude:  -93.7447567;" animation="property: rotation; dur: 10000;
-      to: 0 360 0; loop: true"></a-entity> -->
+      to: 0 360 0; loop: true"></a-entity>
       <!-- West -->
-      <!-- <a-entity gltf-model="#lady_bug" scale=".5 .5 .5" change-visibility-on-click
+      <a-entity gltf-model="#lady_bug" scale=".5 .5 .5" change-visibility-on-click
       gps-projected-entity-place="latitude: 41.6562983; longitude:  -93.7449434;" animation="property: rotation; dur: 10000;
-      to: 0 360 0; loop: true"></a-entity> -->
+      to: 0 360 0; loop: true"></a-entity>
     </a-entity>
 
     <a-entity cursor="rayOrigin:mouse"></a-entity>
