@@ -16,28 +16,27 @@ AFRAME.registerComponent('change-model-on-click', {
       if (userSignedUp == false) {
         validateUserInput();
       }
-
-      function validateUserInput() {
-        let userPrompt = prompt("Please enter your email: ")
-        userSignedUp = true
-        if (userPrompt == "") {
-          alert("Field cannot be empty");
-          validateUserInput();
-        }
-        else if (isNaN(userPrompt) === false) {
-          alert("Field cannot be purely numeric");
-          validateUserInput();
-        }
-        else if (confirm("Your email is '" + userPrompt + "' is that correct?")) {
-          userSignedUp = true
-          listOfEmails.push(userPrompt)
-          console.log(listOfEmails)
-        }
-      }
-
       hover = false;
       el.setAttribute('visible', defaultVisibility)
       el.removeAttribute('gltf-model')
     });
+    
+    function validateUserInput() {
+      let userPrompt = prompt("Please enter your email: ")
+      userSignedUp = true
+      if (userPrompt == "") {
+        alert("Field cannot be empty");
+        validateUserInput();
+      }
+      else if (isNaN(userPrompt) === false) {
+        alert("Field cannot be purely numeric");
+        validateUserInput();
+      }
+      else if (confirm("Your email is '" + userPrompt + "' is that correct?")) {
+        userSignedUp = true
+        listOfEmails.push(userPrompt)
+        console.log(listOfEmails)
+      }
+    }
   }
 });
