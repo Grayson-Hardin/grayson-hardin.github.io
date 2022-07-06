@@ -9,35 +9,48 @@
   <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
   <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
   <script src="https://unpkg.com/aframe-extras@3.3.0/dist/aframe-extras.min.js"></script>
-  <script src="./components/get-user-coords.js"></script> 
+  <!-- <script src="./components/get-user-coords.js"></script>
   <script src="./components/toggle-visibility.js"></script>
-  <script src="./components/change-model-on-click.js"></script>
+  <script src="./components/change-model-on-click.js"></script> -->
+  <script>
+    AFRAME.registerComponent('score-counter', {
+      schema: {
+        el: {
+          type: 'selector'
+        },
+        score:{
+          type: 'int',
+          default: 0
+        },
+      },
+
+      init: function () {
+        var sceneEl = document.querySelector('a-scene'); 
+        var scoreBoard = document.querySelector('#lady_bug');
+
+        sceneEl.querySelector('a-entity').addEventListener('click', () => {
+          this.data.score++;
+          var newScore = 'Score: ' + this.data.score
+          console.log(this.data.score)
+          scoreBoard.setAttribute('text', 'value',  newScore)
+        })
+      }
+    });
+    </script>
 </head>
 
 <body>
-  
-  <a-scene style="margin: 0; overflow: hidden;">
-     <!-- old camera settings -->
-    <!-- <a-camera id='camera' get-user-coords arjs-look-controls='smoothingFactor: 0.1'
-      gps-projected-camera='gpsMinDistance: 1; gpsTimeInterval: 0' rotation-reader> </a-camera> -->
-
-    <a-camera id='camera' look-controls-enabled='false' arjs-look-controls='smoothingFactor: 0.1' gps-projected-camera='gpsMinDistance: 5' rotation-reader get-user-coords> </a-camera>
-
+  <a-scene score-counter style="margin: 0; overflow: hidden;">
+    <a-camera id='camera' look-controls-enabled='false' arjs-look-controls='smoothingFactor: 0.1'
+      gps-projected-camera='gpsMinDistance: 5' rotation-reader get-user-coords> </a-camera>
     <a-asset>
       <a-asset-item id="lady_bug" src="assets/models/lady_bug/scene.gltf">
-        <a-asset-item id="squashed_lady_bug" src="assets/models/flat_lady_bug/scene.gltf">
     </a-asset>
 
-
-    <!-- Grayson's Coords -->
-    <!-- <a-entity gltf-model="#lady_bug" visible="false"  toggle-visibility scale=".5 .5 .5" change-model-on-click
-    gps-projected-entity-place="latitude: 41.158485; longitude:  -93.591937;" animation="property: rotation; dur: 10000;
-    to: 0 360 0; loop: true"></a-entity> -->
-
-    <a-entity gltf-model="#lady_bug" visible="false"  toggle-visibility scale=".5 .5 .5" change-model-on-click
-    gps-projected-entity-place="latitude: 41.1583361; longitude:  -93.5916825" animation="property: rotation; dur: 10000;
+    <a-entity gltf-model="#lady_bug" visible="true" toggle-visibility scale=".5 .5 .5" change-model-on-click
+      gps-projected-entity-place="latitude: 41.1583361; longitude:  -93.5916825" animation="property: rotation; dur: 10000;
     to: 0 360 0; loop: true"></a-entity>
-  <a-entity cursor="rayOrigin:mouse"></a-entity>
+    <a-entity cursor="rayOrigin:mouse"></a-entity>
   </a-scene>
 </body>
 

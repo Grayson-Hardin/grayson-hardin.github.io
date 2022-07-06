@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Hello, WebVR! - A-Frame</title>
+    <meta name="description" content="Hello, WebVR! - A-Frame">
+    <script src="https://aframe.io/releases/0.7.0/aframe.min.js"></script>
+    <script>
+    AFRAME.registerComponent('score-counter', {
+      schema: {
+        el: {
+          type: 'selector'
+        },
+        score:{
+          type: 'int',
+          default: 0
+        },
+      },
+
+      init: function () {
+        var sceneEl = document.querySelector('a-scene'); 
+        var scoreBoard = document.querySelector('#score');
+
+        sceneEl.querySelector('a-box').addEventListener('click', () => {
+          this.data.score++;
+          var newScore = 'Score: ' + this.data.score
+          console.log(this.data.score)
+          scoreBoard.setAttribute('text', 'value',  newScore)
+        })
+      }
+    });
+    </script>
+  </head>
+  <body>
+
+
+    <a-scene score-counter>
+      <a-entity camera="userHeight: 1.6" look-controls cursor="rayOrigin: mouse"></a-entity>
+      <a-box position="-1 0.5 -3" rotation="0 45 0" color="#4CC3D9" shadow></a-box>
+      <a-entity id="score" text="value: Score: 0" position="0 2 -1"></a-entity>
+      <a-sky color="blue"></a-sky>
+    </a-scene>
+  </body>
+</html>
