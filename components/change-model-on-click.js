@@ -8,18 +8,16 @@ AFRAME.registerComponent('change-model-on-click', {
     var hover = true;
     var defaultVisibility = el.getAttribute('visible').visible;
     const listOfEmails = [];
-
+    var userSignedUp = false
 
     el.addEventListener('click', async function () {
-      var userSignedUp = false
-
-      // Ask, Validate, and Save Email
-      if (userSignedUp == false) {
-        validateUserInput();
-      }
       hover = false;
       el.setAttribute('visible', defaultVisibility)
       el.removeAttribute('gltf-model')
+
+      if (userSignedUp === false){
+        validateUserInput();
+      }
     });
 
     function validateUserInput() {
