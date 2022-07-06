@@ -34,34 +34,34 @@ AFRAME.registerComponent('change-model-on-click', {
       el.setAttribute('scale', '.5 .5 .5')
 
 
-    if (el.getAttribute('gltf-model') === 'assets/models/flat_lady_bug/scene.gltf'){
-      window.setTimeout(hideSquashLadyBug, 5000);
+    // if (el.getAttribute('gltf-model') === 'assets/models/flat_lady_bug/scene.gltf'){
+    //   window.setTimeout(hideSquashLadyBug, 5000);
 
-      function hideSquashLadyBug(){
-        el.setAttribute('visible', false)
-      }
-    }
+    //   function hideSquashLadyBug(){
+    //     el.setAttribute('visible', false)
+    //   }
+    // }
       
-      // function validateUserInput() {
-      //   let userPrompt = prompt("Please enter your email: ")
-      //   console.log(isNaN(userPrompt));
-      //   if (userPrompt == "") {
-      //     alert("Field cannot be empty");
-      //     validateUserInput();
-      //   }
-      //   else if (isNaN(userPrompt) === false) {
-      //     alert("Field cannot be purely numeric");
-      //     validateUserInput();
-      //   }
-      //   else if (confirm("Your email is '" + userPrompt + "' is that correct?")) {
-      //     userSignedUp = true
-      //     listOfEmails.push(userPrompt)
-      //     console.log(listOfEmails)
-      //   }
-      //   else {
-      //     validateUserInput()
-      //   }
-      // }
+      function validateUserInput() {
+        let userPrompt = prompt("Please enter your email: ")
+        console.log(isNaN(userPrompt));
+        if (userPrompt == "") {
+          alert("Field cannot be empty");
+          validateUserInput();
+        }
+        else if (isNaN(userPrompt) === false) {
+          alert("Field cannot be purely numeric");
+          validateUserInput();
+        }
+        else if (confirm("Your email is '" + userPrompt + "' is that correct?")) {
+          userSignedUp = true
+          listOfEmails.push(userPrompt)
+          console.log(listOfEmails)
+        }
+        else {
+          validateUserInput()
+        }
+      }
 
     });
   }
