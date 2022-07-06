@@ -43,15 +43,15 @@
   <a-scene score-counter style="margin: 0; overflow: hidden;">
     <a-camera id='camera' look-controls-enabled='false' arjs-look-controls='smoothingFactor: 0.1'
       gps-projected-camera='gpsMinDistance: 5' rotation-reader get-user-coords> 
-      <a-text id="score" position="-1 0 -1" value="Score: 0" color="#fff"></a-text>
+      <a-text id="score" scale=".3 .3 .3" position="-.5 -.7 -2" value="Score: 0" color="#fff"></a-text>
     </a-camera>
      <a-asset>
       <a-asset-item id="lady_bug" src="assets/models/lady_bug/scene.gltf">
     </a-asset> 
 
-    <a-entity gltf-model="#lady_bug" visible="true" toggle-visibility scale=".5 .5 .5" change-model-on-click
+    <!-- <a-entity gltf-model="#lady_bug" visible="true" toggle-visibility scale=".5 .5 .5" change-model-on-click
       gps-projected-entity-place="latitude: 41.1583361; longitude:  -93.5916825" animation="property: rotation; dur: 10000;
-    to: 0 360 0; loop: true"></a-entity> -->
+    to: 0 360 0; loop: true"></a-entity> --> -->
     <!-- <a-entity id="score" text="value: Score: 0" position="-1 .5 -7" scale=" 4 4 4"></a-entity> -->
     <a-entity cursor="rayOrigin:mouse"></a-entity>
 
