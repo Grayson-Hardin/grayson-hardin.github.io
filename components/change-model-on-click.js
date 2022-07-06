@@ -19,7 +19,7 @@ AFRAME.registerComponent('change-model-on-click', {
 
       function validateUserInput() {
         let userPrompt = prompt("Please enter your email: ")
-        console.log(isNaN(userPrompt));
+        userSignedUp = true
         if (userPrompt == "") {
           alert("Field cannot be empty");
           validateUserInput();
