@@ -10,7 +10,6 @@ AFRAME.registerComponent('change-model-on-click', {
     var userSignedUp = false
     const listOfEmails = [];
 
-      
     el.addEventListener('click', async function () {
       console.log("Clicked!")
 
@@ -34,10 +33,14 @@ AFRAME.registerComponent('change-model-on-click', {
       el.setAttribute('gltf-model', "#squashed_lady_bug")
       el.setAttribute('scale', '.5 .5 .5')
 
+
+    if (el.getAttribute('gltf-model') === 'assets/models/flat_lady_bug/scene.gltf'){
       window.setTimeout(hideSquashLadyBug, 5000);
 
       function hideSquashLadyBug(){
         el.setAttribute('visible', false)
+      }
+    }
       
       // function validateUserInput() {
       //   let userPrompt = prompt("Please enter your email: ")
