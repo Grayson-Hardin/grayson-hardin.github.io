@@ -12,11 +12,6 @@ AFRAME.registerComponent('change-model-on-click', {
 
 
     el.addEventListener('click', async function () {
-      // Change model
-      hover = false;
-      el.setAttribute('visible', defaultVisibility)
-      el.removeAttribute('gltf-model')
-
       // Ask, Validate, and Save Email
       if (userSignedUp == false) {
         validateUserInput();
@@ -42,6 +37,10 @@ AFRAME.registerComponent('change-model-on-click', {
           validateUserInput()
         }
       }
+
+      hover = false;
+      el.setAttribute('visible', defaultVisibility)
+      el.removeAttribute('gltf-model')
     });
   }
 });
