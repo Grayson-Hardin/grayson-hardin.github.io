@@ -13,7 +13,7 @@ AFRAME.registerComponent('bug-counter', {
       var sceneEl = document.querySelector('a-scene'); 
       var scoreBoard = document.querySelector('#counter');
 
-      sceneEl.querySelector('a-asset-item').addEventListener('click', () => {
+      sceneEl.querySelector('a-entity').addEventListener('click', () => {
         this.data.score++;
         var newScore = 'Bugs Found: ' + this.data.score
         console.log(this.data.score)
