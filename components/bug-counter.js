@@ -15,7 +15,7 @@ AFRAME.registerComponent('bug-counter', {
 
     sceneEl.querySelector('a-entity').addEventListener('click', () => {
       this.data.score++;
-      var newScore = 'Bugs Found: ' + this.data.score
+      var newScore = this.data.score
       scoreBoard.setAttribute('text', 'value',  newScore)
     })
   }

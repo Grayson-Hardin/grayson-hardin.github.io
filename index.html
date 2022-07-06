@@ -21,14 +21,14 @@
 
     <a-camera id='camera' get-user-coords arjs-look-controls='smoothingFactor: 0.1'
       gps-projected-camera='gpsMinDistance: 1' rotation-reader>       
-      <a-text id="score" scale=".3 .3 .3" position="-.9 -.7 -2" value="Bugs Found: 0" color="#fff"></a-text>
+      <a-text id="score" scale=".3 .3 .3" position="-.9 -.7 -2" value="0" color="#fff"></a-text>
       <a-image src="#lady_bug_icon" scale=".2 .2 .2" position="-1.5 -1.05 -3"></a-image>
     </a-camera>
 
     <a-asset>
       <img id="lady_bug_icon" src="assets/pictures/lady_bug_icon.png">
-      <!-- <a-asset-item id="lady_bug" src="assets/models/lady_bug/scene.gltf">
-      <a-asset-item id="squashed_lady_bug" src="assets/models/flat_lady_bug/scene.gltf"> -->
+      <a-asset-item id="lady_bug" src="assets/models/lady_bug/scene.gltf">
+      <a-asset-item id="squashed_lady_bug" src="assets/models/flat_lady_bug/scene.gltf">
       <audio id="squishSound" src="./assets/squishSound.mp3"></audio>
     </a-asset>
 
