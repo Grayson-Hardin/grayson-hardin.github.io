@@ -14,7 +14,7 @@ AFRAME.registerComponent('change-model-on-click', {
       console.log("Clicked!")
 
       // Shrink animation
-      let scale = el.getAttribute('scale');
+      let scale = el.getAttribute('position');
       console.log(el.getAttribute('gltf-model'))
       console.log(el.getAttribute('position'))
 
