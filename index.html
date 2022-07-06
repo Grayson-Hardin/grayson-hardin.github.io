@@ -11,7 +11,31 @@
   <script src="./components/get-user-coords.js"></script>
   <script src="./components/toggle-visibility.js"></script>
   <script src="./components/change-model-on-click.js"></script>
-  <script src="./components/bug-counter.js"></script>
+  <!-- <script src="./components/bug-counter.js"></script> -->
+  <script>
+    AFRAME.registerComponent('score-counter', {
+      schema: {
+        el: {
+          type: 'selector'
+        },
+        score:{
+          type: 'int',
+          default: 0
+        },
+      },
+
+      init: function () {
+        var sceneEl = document.querySelector('a-scene'); 
+        var scoreBoard = document.querySelector('#score');
+
+        sceneEl.querySelector('a-entity').addEventListener('click', () => {
+          this.data.score++;
+          var newScore = 'Score: ' + this.data.score
+          scoreBoard.setAttribute('text', 'value',  newScore)
+        })
+      }
+    });
+    </script>
 </head>
 
 <body>
