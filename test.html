@@ -20,7 +20,7 @@
         var sceneEl = document.querySelector('a-scene'); 
         var scoreBoard = document.querySelector('#score');
 
-        sceneEl.querySelector('a-box').addEventListener('click', () => {
+        sceneEl.querySelector('a-entity').addEventListener('click', () => {
           this.data.score++;
           var newScore = 'Score: ' + this.data.score
           scoreBoard.setAttribute('text', 'value',  newScore)
@@ -34,9 +34,12 @@
     <a-scene score-counter>
       <a-entity camera="userHeight: 1.6" look-controls cursor="rayOrigin: mouse" >
         <a-text id="score" position="0 0 -1" value="Score: 0" color="#fff"></a-text>
-
       </a-entity>
-      <a-box position="-1 0.5 -3" rotation="0 45 0" color="#4CC3D9" shadow></a-box>
+
+        <a-box position="-1 0.5 -3" rotation="0 45 0" color="#red" shadow></a-box>
+
+        <a-box position="-1 0.5 -2" rotation="0 45 0" color="#4CC3D9" shadow></a-box>
+
       <!-- <a-text id="score" text="value: Score: 0" position="0 2 -1"></a-text> -->
       <a-sky color="blue"></a-sky>
     </a-scene>
