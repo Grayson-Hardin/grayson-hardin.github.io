@@ -33,9 +33,6 @@ AFRAME.registerComponent('change-model-on-click', {
           listOfEmails.push(userPrompt)
           console.log(listOfEmails)
         }
-        else {
-          validateUserInput()
-        }
       }
 
       hover = false;
