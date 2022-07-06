@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -11,31 +12,7 @@
   <script src="./components/get-user-coords.js"></script>
   <script src="./components/toggle-visibility.js"></script>
   <script src="./components/change-model-on-click.js"></script>
-  <!-- <script src="./components/bug-counter.js"></script> -->
-  <script>
-    AFRAME.registerComponent('score-counter', {
-      schema: {
-        el: {
-          type: 'selector'
-        },
-        score:{
-          type: 'int',
-          default: 0
-        },
-      },
-
-      init: function () {
-        var sceneEl = document.querySelector('a-scene'); 
-        var scoreBoard = document.querySelector('#score');
-
-        sceneEl.querySelector('a-entity').addEventListener('click', () => {
-          this.data.score++;
-          var newScore = 'Score: ' + this.data.score
-          scoreBoard.setAttribute('text', 'value',  newScore)
-        })
-      }
-    });
-    </script>
+  <script src="./components/bug-counter.js"></script>
 </head>
 
 <body>
@@ -54,16 +31,15 @@
     <!-- Grayson Coords -->
     <a-entity>
       <a-entity gltf-model="#lady_bug" visible="false" toggle-visibility scale=".5 .5 .5" position="1 1 1"
-      change-model-on-click gps-projected-entity-place="latitude: 41.1583361; longitude:  -93.5916825" animation="property: rotation; dur: 10000;
+        change-model-on-click gps-projected-entity-place="latitude: 41.1583361; longitude:  -93.5916825" animation="property: rotation; dur: 10000;
       to: 0 360 0; loop: true">
-    </a-entity>
+      </a-entity>
 
-    <a-entity gltf-model="#lady_bug" visible="false" toggle-visibility scale=".5 .5 .5" position="1 1 1"
-      change-model-on-click gps-projected-entity-place="latitude: 41.1583361; longitude:  -93.5917825" animation="property: rotation; dur: 10000;
+      <a-entity gltf-model="#lady_bug" visible="false" toggle-visibility scale=".5 .5 .5" position="1 1 1"
+        change-model-on-click gps-projected-entity-place="latitude: 41.1583361; longitude:  -93.5917825" animation="property: rotation; dur: 10000;
       to: 0 360 0; loop: true"></a-entity>
-
     </a-entity>
-   
+
     <a-entity cursor="rayOrigin:mouse"></a-entity>
   </a-scene>
 </body>
