@@ -13,17 +13,16 @@ AFRAME.registerComponent('change-model-on-click', {
 
     el.addEventListener('click', async function () {
       // Ask, Validate, and Save Email
-      if (userSignedUp == false) {
+      while (userSignedUp == false) {
         validateUserInput();
       }
       hover = false;
       el.setAttribute('visible', defaultVisibility)
       el.removeAttribute('gltf-model')
     });
-    
+
     function validateUserInput() {
       let userPrompt = prompt("Please enter your email: ")
-      userSignedUp = true
       if (userPrompt == "") {
         alert("Field cannot be empty");
         validateUserInput();
