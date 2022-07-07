@@ -34,6 +34,6 @@ AFRAME.registerComponent('change-model-on-click', {
       //   alert("Field cannot be purely numeric");
       //   validateUserInput();
       // }
-    }
+   // }
   }
 });
