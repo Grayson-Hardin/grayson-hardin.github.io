@@ -5,25 +5,23 @@ AFRAME.registerComponent('change-model-on-click', {
 
   init: function () {
     var el = this.el;
-    var hover = true;
     var defaultVisibility = el.getAttribute('visible').visible;
     const listOfEmails = [];
     var userSignedUp = false
 
     el.addEventListener('click', async function () {
-      hover = false;
       el.setAttribute('visible', defaultVisibility)
       el.removeAttribute('gltf-model')
 
       if (userSignedUp === false){
         validateUserInput();
+        userSignedUp = true;
       }
     });
 
     function validateUserInput() {
       let userPrompt = prompt("Please enter your email: ")
       // if (confirm("Your email is '" + userPrompt + "' is that correct?")) {
-        userSignedUp = true
         listOfEmails.push(userPrompt)
       }
       // if (userPrompt == "") {
