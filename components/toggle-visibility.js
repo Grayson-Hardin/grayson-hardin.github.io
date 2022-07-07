@@ -35,7 +35,7 @@ AFRAME.registerComponent('toggle-visibility', {
       var distanceFromObject = metersBetween(userLatitude, userLongitude, modelLatitude, modelLongitude);
       console.log(`Distance between #${element.id} and camera is ${distanceFromObject} meters\n\tUser: ${userLatitude}, ${userLongitude}\n\tModel: ${modelLatitude}, ${modelLongitude}`);
 
-      const maximumDistance = 8;
+      const maximumDistance = 10;
 
       const scale = resizeAccordingToDistanceFromBug(distanceFromObject, maximumDistance);
       element.setAttribute('scale', scale);

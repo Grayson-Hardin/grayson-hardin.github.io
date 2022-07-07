@@ -13,16 +13,16 @@ AFRAME.registerComponent('change-model-on-click', {
       el.setAttribute('visible', defaultVisibility)
       el.removeAttribute('gltf-model')
 
-      if (userSignedUp == false){
-        validateUserInput();
-        userSignedUp = true;
-      }
+      // if (userSignedUp == false){
+      //   validateUserInput();
+      //   userSignedUp = true;
+      // }
 
-      function validateUserInput() {
-        let userPrompt = prompt("Please enter your email: ")
-        // if (confirm("Your email is '" + userPrompt + "' is that correct?")) {
-          listOfEmails.push(userPrompt)
-        }
+      // function validateUserInput() {
+      //   let userPrompt = prompt("Please enter your email: ")
+      //   // if (confirm("Your email is '" + userPrompt + "' is that correct?")) {
+      //     listOfEmails.push(userPrompt)
+      //   }
     });
 
     // function validateUserInput() {
