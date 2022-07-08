@@ -15,7 +15,7 @@ AFRAME.registerComponent('bug-counter', {
 
     sceneEl.querySelector('a-entity').addEventListener('click', () => {
       this.data.score++;
-      var newScore = this.data.score + "/18"
+      var newScore = "" + this.data.score + "/18"
       scoreBoard.setAttribute('text', 'value',  newScore)
     })
   }
