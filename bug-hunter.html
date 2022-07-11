@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -15,7 +14,7 @@
   <script src="./components/bug-counter.js"></script>
   <style>
     .bug-icon {
-      position: absolute;
+      position: fixed;
       right: 0;
       bottom: 0;
       max-width: 11%;
@@ -28,6 +27,27 @@
       bottom: 0;
       max-width: 8%;
       max-height: 8%;
+    }
+
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      bottom: 0;
+    }
+
+    button {
+      position: fixed;
+      background-color: #4CAF50;
+      border: none;
+      color: white;
+      padding: 15px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      cursor: pointer;
+      bottom: 0;
     }
 
     .footer {
@@ -43,41 +63,164 @@
   </style>
   <div class="footer"></div>
   </style>
-  <img src="assets/pictures/ladybug-icon-isolated-on-white-background-free-vector.jpeg" class="bug-icon">
+  <img src="assets/pictures/lady_bug_icon.jpeg" class="bug-icon">
   <img src="assets/pictures/LT-logo.png" class="lt-logo">
 </head>
 
-
 <body>
-  <div id='gameplay'>
-    <a-scene bug-counter vr-mode-ui="enabled: false" style="margin: 0; overflow: hidden;">
-      <!-- <a-camera gps-camera rotation-reader id='camera' get-user-coords arjs-look-controls='smoothingFactor: 0.2'>
-        <a-text id="score" scale=".3 .3 .3" position=".68 -.75 -2" value="0/18" color="#000000"></a-text>
-      </a-camera> -->
+  <div class="container">
+    <button> Submit</button>
+    <div id='gameplay'>
+      <a-scene bug-counter vr-mode-ui="enabled: false" style="margin: 0; overflow: hidden;">
+        <a-camera id='camera' get-user-coords arjs-look-controls='smoothingFactor: 0.1'
+          gps-projected-camera='gpsMinDistance: 1' rotation-reader>
+          <!-- <a-text id="score" scale=".3 .3 .3" position="-.9 -.7 -2" value="0" color="#000000"></a-text> -->
+          <a-text id="score" scale=".3 .3 .3" position=".68 -.75 -2" value="0/18" color="#000000"></a-text>
 
-      <a-camera id='camera' get-user-coords arjs-look-controls='smoothingFactor: 0.1' gpsMinDistance="5" gpsTimeInterval="1"
-        gps-projected-camera='gpsMinDistance: 1' rotation-reader>
-        <a-text id="score" scale=".3 .3 .3" position=".68 -.75 -2" value="0/18" color="#000000"></a-text>
-      </a-camera> 
 
-      <a-asset>
-        <a-asset-item id="lady_bug" src="assets/models/lady_bug/scene.gltf">
-          <audio id="squishSound" src="./assets/squishSound.mp3"></audio>
-      </a-asset>
+          <!-- <a-text id="score" scale=".3 .3 .3" position="-.9 -.7 -2" value="0" color="#000000"></a-text> -->
+          <!-- <a-image src="#lady_bug_icon" scale="1 1 1" position="-1.5 -1.10 -3.02"></a-image>
+        <a-image src="#LT_logo" scale=".2 .2 .2" position="1.45 -1.095 -2.98"></a-image> -->
 
-      <a-entity>
-        <!-- Grayson Coords -->
-        <a-entity gltf-model="#lady_bug" visible="false" toggle-visibility scale=".5 .5 .5" change-model-on-click
-          gps-entity-place="latitude: 41.1583361; longitude:  -93.5916825" animation="property: rotation; dur: 10000;
+        </a-camera>
+
+        <a-asset>
+          <!-- <img id="lady_bug_icon" src="assets/pictures/lady_bug_icon.png">
+        <img id="LT_logo" src="assets/pictures/LT-logo.png"> -->
+          <a-asset-item id="lady_bug" src="assets/models/lady_bug/scene.gltf">
+            <!-- <a-asset-item id="squashed_lady_bug" src="assets/models/flat_lady_bug/scene.gltf"> -->
+            <audio id="squishSound" src="./assets/squishSound.mp3"></audio>
+        </a-asset>
+
+        <a-entity>
+          <!-- Grayson Coords -->
+          <a-entity gltf-model="#lady_bug" visible="false" toggle-visibility scale=".5 .5 .5" change-model-on-click
+            gps-projected-entity-place="latitude: 41.1583361; longitude:  -93.5916825" animation="property: rotation; dur: 10000;
         to: 0 360 0; loop: true"></a-entity>
-        <a-entity gltf-model="#lady_bug" visible="false" toggle-visibility scale=".5 .5 .5" change-model-on-click
-          gps-entity-place="latitude: 41.1583361; longitude:  -93.5917825" animation="property: rotation; dur: 10000;
+          <a-entity gltf-model="#lady_bug" visible="false" toggle-visibility scale=".5 .5 .5" change-model-on-click
+            gps-projected-entity-place="latitude: 41.1583361; longitude:  -93.5917825" animation="property: rotation; dur: 10000;
         to: 0 360 0; loop: true"></a-entity>
 
-      </a-entity>
-      <a-entity cursor="rayOrigin:mouse"></a-entity>
-    </a-scene>
-  </div>
+          <!-- Brandon's Coords -->
+          <a-entity id="loto-lake" gltf-model="#lady_bug" visible="false" toggle-visibility
+            gps-projected-entity-place="latitude: 38.080182; longitude:  -92.821941;"
+            animation="property: rotation; dur: 10000; to: 0 360 0; loop: true">
+          </a-entity>
+
+          <a-entity id="loto-dock" gltf-model="#lady_bug" visible="false" toggle-visibility
+            gps-projected-entity-place="latitude: 38.080136; longitude:  -92.821914;">
+          </a-entity>
+
+
+          <!-- Nate's Coords -->
+          <!-- sound="src: #tieSound; volume: 2; rolloffFactor: 2; refDistance: 1; autoplay: true; distanceModel: exponential; loop: true" -->
+          <a-entity gltf-model="#lady_bug" visible="false" toggle-visibility scale=".5 .5 .5" change-model-on-click
+            gps-projected-entity-place="latitude: 41.573226; longitude: -93.941149;" animation="property: rotation; dur: 10000;
+        to: 0 360 0; loop: true"></a-entity>
+          <a-entity gltf-model="#lady_bug" visible="false" toggle-visibility scale=".5 .5 .5" change-model-on-click
+            gps-projected-entity-place="latitude: 41.573426; longitude: -93.939945;" animation="property: rotation; dur: 10000;
+        to: 0 360 0; loop: true"></a-entity>
+          <a-entity gltf-model="#lady_bug" visible="false" toggle-visibility scale=".5 .5 .5" change-model-on-click
+            gps-projected-entity-place="latitude: 41.5737796; longitude: -93.9405622;" animation="property: rotation; dur: 10000;
+        to: 0 360 0; loop: true"></a-entity>
+
+          <!-- Office Coords -->
+          <!-- North -->
+          <a-entity gltf-model="#lady_bug" visible="false" toggle-visibility scale=".5 .5 .5" change-model-on-click
+            gps-projected-entity-place="latitude: 41.6564324; longitude:  -93.7447186;" animation="property: rotation; dur: 10000;
+      to: 0 360 0; loop: true"></a-entity>
+          <!-- East -->
+          <a-entity gltf-model="#lady_bug" visible="false" toggle-visibility scale=".5 .5 .5" change-model-on-click
+            gps-projected-entity-place="latitude: 41.6562882; longitude:  -93.7445112;" animation="property: rotation; dur: 10000;
+      to: 0 360 0; loop: true"></a-entity>
+          <!-- South -->
+          <a-entity gltf-model="#lady_bug" visible="false" toggle-visibility scale=".5 .5 .5" change-model-on-click
+            gps-projected-entity-place="latitude: 41.6561776; longitude:  -93.7449206;" animation="property: rotation; dur: 10000;
+      to: 0 360 0; loop: true"></a-entity>
+          <!-- West -->
+          <a-entity gltf-model="#lady_bug" visible="false" toggle-visibility scale=".5 .5 .5" change-model-on-click
+            gps-projected-entity-place="latitude: 41.6562983; longitude:  -93.7449434;" animation="property: rotation; dur: 10000;
+      to: 0 360 0; loop: true"></a-entity>
+
+
+          <!-- Glen Oaks Coords-->
+          <!-- Hole 1 -->
+          <a-entity gltf-model="#lady_bug" visible="false" toggle-visibility scale=".5 .5 .5" change-model-on-click
+            gps-projected-entity-place="latitude: 41.546814; longitude:  -93.778357;" animation="property: rotation; dur: 10000;
+        to: 0 360 0; loop: true"></a-entity>
+          <!-- Hole 2 -->
+          <a-entity gltf-model="#lady_bug" visible="false" toggle-visibility scale=".5 .5 .5" change-model-on-click
+            gps-projected-entity-place="latitude: 41.544847; longitude: -93.779215;" animation="property: rotation; dur: 10000;
+         to: 0 360 0; loop: true"></a-entity>
+          <!-- Hole 3 -->
+          <a-entity gltf-model="#lady_bug" visible="false" toggle-visibility scale=".5 .5 .5" change-model-on-click
+            gps-projected-entity-place="latitude: 41.543747; longitude: -93.781822;" animation="property: rotation; dur: 10000;
+        to: 0 360 0; loop: true"></a-entity>
+          <!-- Hole 4 -->
+          <a-entity gltf-model="#lady_bug" visible="false" toggle-visibility scale=".5 .5 .5" change-model-on-click
+            gps-projected-entity-place="latitude: 41.546461; longitude: -93.781410;" animation="property: rotation; dur: 10000;
+        to: 0 360 0; loop: true"></a-entity>
+          <!-- Hole 5 -->
+          <a-entity gltf-model="#lady_bug" visible="false" toggle-visibility scale=".5 .5 .5" change-model-on-click
+            gps-projected-entity-place="latitude: 41.548171; longitude: -93.780069;" animation="property: rotation; dur: 10000;
+        to: 0 360 0; loop: true"></a-entity>
+          <!-- Hole 6 -->
+          <a-entity gltf-model="#lady_bug" visible="false" toggle-visibility scale=".5 .5 .5" change-model-on-click
+            gps-projected-entity-place="latitude: 41.553278; longitude: -93.781002;" animation="property: rotation; dur: 10000;
+      to: 0 360 0; loop: true"></a-entity>
+          <!-- Hole 7 -->
+          <a-entity gltf-model="#lady_bug" visible="false" toggle-visibility scale=".5 .5 .5" change-model-on-click
+            gps-projected-entity-place="latitude: 41.555976; longitude: -93.778567;" animation="property: rotation; dur: 10000;
+      to: 0 360 0; loop: true"></a-entity>
+          <!-- Hole 8 -->
+          <a-entity gltf-model="#lady_bug" visible="false" toggle-visibility scale=".5 .5 .5" change-model-on-click
+            gps-projected-entity-place="latitude: 41.553848; longitude: -93.780745;" animation="property: rotation; dur: 10000;
+      to: 0 360 0; loop: true"></a-entity>
+          <!-- Hole 9 -->
+          <a-entity gltf-model="#lady_bug" visible="false" toggle-visibility scale=".5 .5 .5" change-model-on-click
+            gps-projected-entity-place="latitude: 41.549665; longitude: -93.781399;" animation="property: rotation; dur: 10000;
+      to: 0 360 0; loop: true"></a-entity>
+          <!-- Hole 10 -->
+          <a-entity gltf-model="#lady_bug" visible="false" toggle-visibility scale=".5 .5 .5" change-model-on-click
+            gps-projected-entity-place="latitude: 41.552515; longitude: -93.782590;" animation="property: rotation; dur: 10000;
+      to: 0 360 0; loop: true"></a-entity>
+          <!-- Hole 11 -->
+          <a-entity gltf-model="#lady_bug" visible="false" toggle-visibility scale=".5 .5 .5" change-model-on-click
+            gps-projected-entity-place="latitude: 41.557533; longitude: -93.781131;" animation="property: rotation; dur: 10000;
+      to: 0 360 0; loop: true"></a-entity>
+          <!-- Hole 12 -->
+          <a-entity gltf-model="#lady_bug" visible="false" toggle-visibility scale=".5 .5 .5" change-model-on-click
+            gps-projected-entity-place="latitude: 41.556610; longitude: -93.784790;" animation="property: rotation; dur: 10000;
+      to: 0 360 0; loop: true"></a-entity>
+          <!-- Hole 13 -->
+          <a-entity gltf-model="#lady_bug" visible="false" toggle-visibility scale=".5 .5 .5" change-model-on-click
+            gps-projected-entity-place="latitude: 41.552957; longitude: -93.784672;" animation="property: rotation; dur: 10000;
+      to: 0 360 0; loop: true"></a-entity>
+          <!-- Hole 14 -->
+          <a-entity gltf-model="#lady_bug" visible="false" toggle-visibility scale=".5 .5 .5" change-model-on-click
+            gps-projected-entity-place="latitude: 41.553680; longitude: -93.786314;" animation="property: rotation; dur: 10000;
+      to: 0 360 0; loop: true"></a-entity>
+          <!-- Hole 15 -->
+          <a-entity gltf-model="#lady_bug" visible="false" toggle-visibility scale=".5 .5 .5" change-model-on-click
+            gps-projected-entity-place="latitude: 41.549208; longitude: -93.786486;" animation="property: rotation; dur: 10000;
+      to: 0 360 0; loop: true"></a-entity>
+          <!-- Hole 16 -->
+          <a-entity gltf-model="#lady_bug" visible="false" toggle-visibility scale=".5 .5 .5" change-model-on-click
+            gps-projected-entity-place="latitude: 41.548389; longitude: -93.784308;" animation="property: rotation; dur: 10000;
+      to: 0 360 0; loop: true"></a-entity>
+          <!-- Hole 17 -->
+          <a-entity gltf-model="#lady_bug" visible="false" toggle-visibility scale=".5 .5 .5" change-model-on-click
+            gps-projected-entity-place="latitude: 41.545707; longitude: -93.783922;" animation="property: rotation; dur: 10000;
+      to: 0 360 0; loop: true"></a-entity>
+          <!-- Hole 18 -->
+          <a-entity gltf-model="#lady_bug" visible="false" toggle-visibility scale=".5 .5 .5" change-model-on-click
+            gps-projected-entity-place="latitude: 41.547931; longitude: -93.782216;" animation="property: rotation; dur: 10000;
+      to: 0 360 0; loop: true"></a-entity>
+
+        </a-entity>
+        <a-entity cursor="rayOrigin:mouse"></a-entity>
+      </a-scene>
+    </div>
 </body>
 
 </html>
