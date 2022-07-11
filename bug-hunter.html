@@ -51,7 +51,7 @@
 <body>
   <div id='gameplay'>
     <a-scene bug-counter vr-mode-ui="enabled: false" style="margin: 0; overflow: hidden;">
-      <a-camera gps-camera rotation-reader get-user-coords arjs-look-controls='smoothingFactor: 0.1'>
+      <a-camera gps-projected-camera rotation-reader get-user-coords arjs-look-controls='smoothingFactor: 0.1'>
         <a-text id="score" scale=".3 .3 .3" position=".68 -.75 -2" value="0/18" color="#000000"></a-text>
 
       </a-camera>
@@ -63,10 +63,10 @@
 
       <a-entity>
         <a-entity gltf-model="#lady_bug" visible="false" toggle-visibility scale=".5 .5 .5" change-model-on-click
-          gps-entity-place="latitude: 41.1583361; longitude:  -93.5916825" animation="property: rotation; dur: 10000;
+          gps-projected-entity-place="latitude: 41.1583361; longitude:  -93.5916825" animation="property: rotation; dur: 10000;
         to: 0 360 0; loop: true"></a-entity>
         <a-entity gltf-model="#lady_bug" visible="false" toggle-visibility scale=".5 .5 .5" change-model-on-click
-          gps-entity-place="latitude: 41.1583361; longitude:  -93.5917825" animation="property: rotation; dur: 10000;
+          gps-projected-entity-place="latitude: 41.1583361; longitude:  -93.5917825" animation="property: rotation; dur: 10000;
         to: 0 360 0; loop: true"></a-entity>
 
       </a-entity>
