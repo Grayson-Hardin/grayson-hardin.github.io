@@ -51,10 +51,14 @@
 <body>
   <div id='gameplay'>
     <a-scene bug-counter vr-mode-ui="enabled: false" style="margin: 0; overflow: hidden;">
-      <a-camera gps-projected-camera rotation-reader get-user-coords arjs-look-controls='smoothingFactor: 0.1'>
+      <!-- <a-camera gps-camera rotation-reader id='camera' get-user-coords arjs-look-controls='smoothingFactor: 0.2'>
         <a-text id="score" scale=".3 .3 .3" position=".68 -.75 -2" value="0/18" color="#000000"></a-text>
+      </a-camera> -->
 
-      </a-camera>
+      <a-camera id='camera' get-user-coords arjs-look-controls='smoothingFactor: 0.1' gpsMinDistance="5" gpsTimeInterval="1"
+        gps-projected-camera='gpsMinDistance: 1' rotation-reader>
+        <a-text id="score" scale=".3 .3 .3" position=".68 -.75 -2" value="0/18" color="#000000"></a-text>
+      </a-camera> 
 
       <a-asset>
         <a-asset-item id="lady_bug" src="assets/models/lady_bug/scene.gltf">
@@ -62,11 +66,12 @@
       </a-asset>
 
       <a-entity>
+        <!-- Grayson Coords -->
         <a-entity gltf-model="#lady_bug" visible="false" toggle-visibility scale=".5 .5 .5" change-model-on-click
-          gps-projected-entity-place="latitude: 41.1583361; longitude:  -93.5916825" animation="property: rotation; dur: 10000;
+          gps-entity-place="latitude: 41.1583361; longitude:  -93.5916825" animation="property: rotation; dur: 10000;
         to: 0 360 0; loop: true"></a-entity>
         <a-entity gltf-model="#lady_bug" visible="false" toggle-visibility scale=".5 .5 .5" change-model-on-click
-          gps-projected-entity-place="latitude: 41.1583361; longitude:  -93.5917825" animation="property: rotation; dur: 10000;
+          gps-entity-place="latitude: 41.1583361; longitude:  -93.5917825" animation="property: rotation; dur: 10000;
         to: 0 360 0; loop: true"></a-entity>
 
       </a-entity>
