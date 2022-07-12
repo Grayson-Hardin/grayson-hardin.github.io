@@ -18,9 +18,7 @@
 <body>
   <div id='gameplay'>
     <a-scene bug-counter vr-mode-ui="enabled: false" style="margin: 0; overflow: hidden;">
-      <a-camera id='camera' get-user-coords arjs-look-controls='smoothingFactor: 0.1' rotation-reader>
-        <a-text id="score" scale=".3 .3 .3" position=".68 -.75 -2" value="0/18" color="#000000"></a-text>
-      </a-camera>
+      <a-camera></a-camera>
 
       <a-entity cursor="rayOrigin:mouse" cursor="fuseTimeout: 0;"></a-entity>
 
@@ -28,10 +26,11 @@
         <a-asset-item id="lady_bug" src="assets/models/lady_bug/scene.gltf">
           <audio id="squishSound" src="./assets/squishSound.mp3"></audio>
       </a-asset>
-<!-- 
-        <a-entity gltf-model="#lady_bug" visible="false" toggle-visibility scale=".5 .5 .5" change-model-on-click
+
+      
+      <a-entity gltf-model="#lady_bug" visible="false" toggle-visibility scale=".5 .5 .5" change-model-on-click
           position="0 0 0" animation="property: rotation; dur: 10000;
-        to: 0 360 0; loop: true"></a-entity> -->
+        to: 0 360 0; loop: true"></a-entity> 
 
     </a-scene>
   </div>
