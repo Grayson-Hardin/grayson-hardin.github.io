@@ -9,17 +9,12 @@
   <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
   <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
   <script src="https://unpkg.com/aframe-extras@3.3.0/dist/aframe-extras.min.js"></script>
-  <script src="./components/get-user-coords.js"></script>
-  <script src="./components/toggle-visibility.js"></script>
-  <script src="./components/change-model-on-click.js"></script>
-  <script src="./components/bug-counter.js"></script>
+
 </head>
 
 <body>
     <a-scene bug-counter vr-mode-ui="enabled: false" style="margin: 0; overflow: hidden;">
       <a-camera></a-camera>
-
-      <a-entity cursor="rayOrigin:mouse" cursor="fuseTimeout: 0;"></a-entity>
 
       <a-asset>
         <a-asset-item id="lady_bug" src="assets/models/lady_bug/scene.gltf">
@@ -28,14 +23,12 @@
 
 
       <a-entity gps-projected-entity-place="latitude: 41.1583361; longitude:  -93.5916825">
-        <!-- <a-entity gltf-model="#lady_bug" visible="true" toggle-visibility scale=".5 .5 .5" change-model-on-click
+       <a-entity gltf-model="#lady_bug" visible="true" toggle-visibility scale=".5 .5 .5" change-model-on-click
         position="1 1 1" animation="property: rotation; dur: 10000;
-      to: 0 360 0; loop: true"></a-entity>  -->
-      <a--asset gltf-model="#lady_bug" visible="true" toggle-visibility scale=".5 .5 .5" change-model-on-click
-      position="1 1 1" animation="property: rotation; dur: 10000; to: 0 360 0; loop: true">
-      </a--asset>
+      to: 0 360 0; loop: true"></a-entity> 
       </a-entity>
 
+      <a-entity cursor="rayOrigin:mouse" cursor="fuseTimeout: 0;"></a-entity>
     </a-scene>
 </body>
 </html>
