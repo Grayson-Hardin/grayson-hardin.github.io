@@ -1,49 +1,40 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>LT Golf AR Project</title>
-    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
-    <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
-    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
-    <script src="https://unpkg.com/aframe-extras@3.3.0/dist/aframe-extras.min.js"></script>
-    <script src="./components/get-user-coords.js"></script>
-    <script src="./components/toggle-visibility.js"></script>
-    <script src="./components/change-model-on-click.js"></script>
-    <script src="./components/bug-counter.js"></script>
-    <style>
 
-a.button {
-  -webkit-appearance: button;
-  -moz-appearance: button;
-  appearance: button;
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>LT Golf AR Project</title>
+  <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+  <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
+  <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
+  <script src="https://unpkg.com/aframe-extras@3.3.0/dist/aframe-extras.min.js"></script>
+  <script src="./components/get-user-coords.js"></script>
+  <script src="./components/toggle-visibility.js"></script>
+  <script src="./components/change-model-on-click.js"></script>
+  <script src="./components/bug-counter.js"></script>
+</head>
 
-  text-decoration: none;
-  color: initial;
-}
-    </style>
-  </head>
+<body>
+  <div id='gameplay'>
+    <a-scene bug-counter vr-mode-ui="enabled: false" style="margin: 0; overflow: hidden;">
+      <a-camera id='camera' get-user-coords arjs-look-controls='smoothingFactor: 0.1' rotation-reader>
+        <a-text id="score" scale=".3 .3 .3" position=".68 -.75 -2" value="0/18" color="#000000"></a-text>
+      </a-camera>
 
-  <body>
-    
-    <div id="instructions">
-      <img id="logo" src="./assets/pictures/colored-logo.png" alt="Lean TECHniques, Inc." />
-      <div id="asdf">
-        <p><b>Welcome to the Iowa Tech Open brought to you by the Technology Association of Iowa!</b></p>
-        <p>
-          This is your chance to squash some bugs and enter for a chance to win golf lessons by award winning golf instructor
-          <a href="https://kenschallgolf.com">Ken Schall</a>.
-        </p>
-        <p>
-          <b>How it works:</b> Click the button below and allow the web page to access your phone's camera, location, and motion
-          information. Once you're in, use your phone to locate bugs on and around the greens on the course. Click on the bug to be awarded
-          an entry into the drawing for golf lessons. Find all the bugs and get 18 chances to win!
-        </p>
-      </div>
-    </div>
-    <a id="start" href="./bug-hunter.html">Hunt Some Bugs!</a>
-  </body>
-  <a href="https://google.com" class="button">Go to Google</a>
+      <a-entity cursor="rayOrigin:mouse" cursor="fuseTimeout: 0;"></a-entity>
+
+      <a-asset>
+        <a-asset-item id="lady_bug" src="assets/models/lady_bug/scene.gltf">
+          <audio id="squishSound" src="./assets/squishSound.mp3"></audio>
+      </a-asset>
+
+        <a-entity gltf-model="#lady_bug" visible="false" toggle-visibility scale=".5 .5 .5" change-model-on-click
+          position="0 0 0" animation="property: rotation; dur: 10000;
+        to: 0 360 0; loop: true"></a-entity>
+
+    </a-scene>
+  </div>
+</body>
 
 </html>
