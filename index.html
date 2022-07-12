@@ -14,12 +14,11 @@
 
 <body>
     <a-scene vr-mode-ui="enabled: false" style="margin: 0; overflow: hidden;">
-      <a-camera id='camera' get-user-coords arjs-look-controls='smoothingFactor: 0.1'
-        gps-projected-camera='gpsMinDistance: 1' rotation-reader>
+      <a-camera id='camera' arjs-look-controls='smoothingFactor: 0.1'
+        gps-projected-camera='gpsMinDistance: 5' rotation-reader>
       </a-camera>
 
     
-
       <a-entity gps-projected-entity-place="latitude: 41.1583361; longitude:  -93.5916825">
         <a-asset>
           <a-asset-item id="lady_bug" src="assets/models/lady_bug/scene.gltf">
