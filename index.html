@@ -18,13 +18,14 @@
         gps-projected-camera='gpsMinDistance: 1' rotation-reader>
       </a-camera>
 
-      <a-asset>
-        <a-asset-item id="lady_bug" src="assets/models/lady_bug/scene.gltf">
-          <audio id="squishSound" src="./assets/squishSound.mp3"></audio>
-      </a-asset>
-
+    
 
       <a-entity gps-projected-entity-place="latitude: 41.1583361; longitude:  -93.5916825">
+        <a-asset>
+          <a-asset-item id="lady_bug" src="assets/models/lady_bug/scene.gltf">
+            <audio id="squishSound" src="./assets/squishSound.mp3"></audio>
+        </a-asset>
+  
        <a-entity gltf-model="#lady_bug" visible="true" toggle-visibility scale=".5 .5 .5" change-model-on-click
         position="1 1 1" animation="property: rotation; dur: 10000;
       to: 0 360 0; loop: true"></a-entity> 
