@@ -1,35 +1,116 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>LT Golf AR Project</title>
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
+    <script src="https://unpkg.com/aframe-extras@3.3.0/dist/aframe-extras.min.js"></script>
+    <script src="./components/get-user-coords.js"></script>
+    <script src="./components/toggle-visibility.js"></script>
+    <script src="./components/change-model-on-click.js"></script>
+    <script src="./components/bug-counter.js"></script>
+    <style>
 
-<head>
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>LT Golf AR Project</title>
-  <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
-  <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
-  <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
-  <script src="https://unpkg.com/aframe-extras@3.3.0/dist/aframe-extras.min.js"></script>
-  <script src="./components/get-user-coords.js"></script>
-  <script src="./components/toggle-visibility.js"></script>
-  <script src="./components/change-model-on-click.js"></script>
-</head>
+      #instructions {
+        position: fixed; /* Sit on top of the page content */
+        display: block; /* Hidden by default */
+        width: 100%; /* Full width (cover the whole page) */
+        height: 100%; /* Full height (cover the whole page) */
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        /* background-color: black; Black background with opacity */
+        /* opacity: 0.65 !important; */
+        cursor: pointer; /* Add a pointer on hover */
+        
+      }
 
-<body>
-    <a-scene gps-projected-entity-place="latitude: 41.1583361; longitude:  -93.5916825" vr-mode-ui="enabled: false" style="margin: 0; overflow: hidden;">
-      <a-camera get-user-coords></a-camera>
+      #start {
+        padding: 20px;
+        font-size: 5vw;
+        background-color: #015b79;
+        color: #ffffff;
+        border-color: #843c3c;
+        border-style: solid;
+        border-width: 10px;
+        border-radius: 50px;
+        position: absolute;
+        top: 95%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-decoration: none;
+        
+      }
 
-      <a-asset>
-        <a-asset-item id="lady_bug" src="assets/models/lady_bug/scene.gltf">
-          <audio id="squishSound" src="./assets/squishSound.mp3"></audio>
-      </a-asset>
+      #logo {
+        position: absolute;
+        width: 80%;
+        left: 50%;
+        transform: translateX(-50%);
+        
+      }
+
+      #asdf {
+        font-size: 5vw;
+        font-family: sans-serif;
+        position: absolute;
+        width: 90%;
+        top: 15%;
+        left: 50%;
+        transform: translateX(-50%);
+        color: white;
+        opacity: 1;
+        
+      }
+
+      p {
+        opacity: 1;
+        
+      }
+
+      a {
+        font-family: sans-serif;
+        color: white;
+      }
+
+      a:visited {
+        color: white;
+      }
+
+      #scene {
+        margin: 0;
+        overflow: hidden;
+      }
+
+      body {
+        background-image: url("assets/pictures/putting.jpg");
+        margin: 0;
+        
+      }
+    </style>
+  </head>
+
+  <body>
     
-      <a-entity gps-projected-entity-place="latitude: 41.1583361; longitude:  -94.5916825">  
-       <a-entity gltf-model="#lady_bug" visible="true" scale=".5 .5 .5" 
-        position="1 1 1" animation="property: rotation; dur: 10000;
-      to: 0 360 0; loop: true"></a-entity> 
-      </a-entity>
-
-      <a-entity cursor="rayOrigin:mouse" cursor="fuseTimeout: 0;"></a-entity>
-    </a-scene>
-</body>
+    <div id="instructions">
+      <img id="logo" src="./assets/pictures/colored-logo.png" alt="Lean TECHniques, Inc." />
+      <div id="asdf">
+        <p><b>Welcome to the Iowa Tech Open brought to you by the Technology Association of Iowa!</b></p>
+        <p>
+          This is your chance to squash some bugs and enter for a chance to win golf lessons by award winning golf instructor
+          <a href="https://kenschallgolf.com">Ken Schall</a>.
+        </p>
+        <p>
+          <b>How it works:</b> Click the button below and allow the web page to access your phone's camera, location, and motion
+          information. Once you're in, use your phone to locate bugs on and around the greens on the course. Click on the bug to be awarded
+          an entry into the drawing for golf lessons. Find all the bugs and get 18 chances to win!
+        </p>
+      </div>
+    </div>
+    <a id="start" href="./bug-hunter.html">Hunt Some Bugs!</a>
+  </body>
 </html>

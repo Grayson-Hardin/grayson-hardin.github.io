@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <style>
+      input[type="text"],
+      select {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+      }
+
+      input[type="submit"] {
+        font-size: 3vw;
+        width: 100%;
+        background-color: #015b79;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+
+      input[type="submit"]:hover {
+        background-color: #015b79;
+      }
+
+      div {
+        border-radius: 5px;
+        background-color: #f2f2f2;
+        padding: 20px;
+      }
+    </style>
+
+    <img id="logo" src="./assets/pictures/colored-logo.png" alt="Lean TECHniques, Inc." />
+
+    <div>
+      <label for="fname" font-size="20px">First Name *</label>
+      <input type="text" id="fname" name="firstname" placeholder="Your name.." />
+
+      <label for="lname">Last Name *</label>
+      <input type="text" id="lname" name="lastname" placeholder="Your last name.." />
+
+      <label for="lname">Email *</label>
+      <input type="text" id="email" placeholder="Your email.." />
+
+      <label for="lname">Entries </label>
+      <input type="text" id="entries" value="x">
+
+      <input type="submit" value="Submit" onclick="getPostRequest();" />
+    </div>
+  </body>
+  
+  <script>document.getElementById("entries").disabled = true;</script>
+  <script>
+    function getPostRequest() {
+      let userdata = {
+        firstName: getInputValue("fname"),
+        lastName: getInputValue("lname"),
+        email: getInputValue("email"),
+        multiplier: document.cookie["multiplier"],
+        raffle: "",
+      };
+
+      if (userdata.firstName == "" || userdata.lastName == "" || userdata.email == "") {
+        alert("Field(s) cannot be empty");
+      } else {
+        let xhr = new XMLHttpRequest();
+        xhr.open("POST", "https://9809n7v990.execute-api.us-east-1.amazonaws.com/beta/userInfo");
+        xhr.setRequestHeader("Content-type", "application/json");
+        xhr.send(JSON.stringify(userdata));
+
+        alert("Success");
+      }
+    }
+
+    function getInputValue(id) {
+      var inputVal = document.getElementById(id).value;
+
+      return inputVal;
+    }
+  </script>
+</html>
+Footer
