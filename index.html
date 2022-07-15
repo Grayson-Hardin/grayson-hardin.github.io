@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>LT Golf AR Project</title>
@@ -12,105 +12,83 @@
     <script src="./components/toggle-visibility.js"></script>
     <script src="./components/change-model-on-click.js"></script>
     <script src="./components/bug-counter.js"></script>
-    <style>
+  </head>
 
-      #instructions {
-        position: fixed; /* Sit on top of the page content */
-        display: block; /* Hidden by default */
-        width: 100%; /* Full width (cover the whole page) */
-        height: 100%; /* Full height (cover the whole page) */
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        /* background-color: black; Black background with opacity */
-        /* opacity: 0.65 !important; */
-        cursor: pointer; /* Add a pointer on hover */
-        
-      }
+<!-- <script>
+    <video autoplay="" muted="" playsinline="" id="arjs-video" style="width: 2618.67px; height: 2618px; top: 0px; left: 0px; z-index: -2; margin-left: -1302.33px; margin-top: 0px;"></video>
+</script> -->
+<!-- <style>
+    .bug-icon {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      max-width: 11%;
+      max-height: 11%;
+    }
 
-      #start {
-        padding: 20px;
+    .lt-logo {
+      position: fixed;
+      left: 0;
+      bottom: 0;
+      max-width: 8%;
+      max-height: 8%;
+    }
+
+    #start {
         font-size: 5vw;
         background-color: #015b79;
         color: #ffffff;
-        border-color: #843c3c;
-        border-style: solid;
-        border-width: 10px;
-        border-radius: 50px;
-        position: absolute;
-        top: 95%;
+        position: fixed;
+        top: 97.5%;
         left: 50%;
         transform: translate(-50%, -50%);
         text-decoration: none;
         
       }
 
-      #logo {
-        position: absolute;
-        width: 80%;
-        left: 50%;
-        transform: translateX(-50%);
-        
-      }
+    .footer {
+      position: fixed;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 4.8%;
+      background-color: white;
+      color: white;
+      text-align: center;
+    }
+  </style> -->
 
-      #asdf {
-        font-size: 5vw;
-        font-family: sans-serif;
-        position: absolute;
-        width: 90%;
-        top: 15%;
-        left: 50%;
-        transform: translateX(-50%);
-        color: white;
-        opacity: 1;
-        
-      }
+  <!-- style="width: 2618.67px; height: 2618px; top: 0px; left: 0px; z-index: -2; margin-left: -1302.33px; margin-top: 20px;" -->
+<body>
+    <div id="myEmbeddedScene">
+        <a-scene embedded>
+            <a-camera id='camera' get-user-coords arjs-look-controls='smoothingFactor: 0.1'
+            gps-projected-camera='gpsMinDistance: 5' rotation-reader>
+            <a-text updateScoreboard id="score" scale=".3 .3 .3" position=".68 -.75 -2" value="0/18" color="#000000"></a-text>
+          </a-camera>
 
-      p {
-        opacity: 1;
-        
-      }
+          <a-entity cursor="rayOrigin:mouse" cursor="fuseTimeout: 0;" ></a-entity>
 
-      a {
-        font-family: sans-serif;
-        color: white;
-      }
+          <a-asset>
+            <a-asset-item id="lady_bug" src="assets/models/flat_lady_bug/scene.gltf">
+            <audio id="squishSound" src="./assets/squishSound.mp3"></audio>
+          </a-asset>
 
-      a:visited {
-        color: white;
-      }
-
-      #scene {
-        margin: 0;
-        overflow: hidden;
-      }
-
-      body {
-        background-image: url("assets/pictures/putting.jpg");
-        margin: 0;
-        
-      }
-    </style>
-  </head>
-
-  <body>
+          <a-entity>
+            <!-- Grayson Coords -->
+            <a-entity id="marker" visible="false" toggle-visibility scale="6 6 6" change-model-on-click
+              gps-projected-entity-place="latitude: 41.1587; longitude: -93.5924" animation="property: rotation; dur: 10000;
+              to: 0 360 0; loop: true"></a-entity>
+           
+          </a-entity>
     
-    <div id="instructions">
-      <img id="logo" src="./assets/pictures/colored-logo.png" alt="Lean TECHniques, Inc." />
-      <div id="asdf">
-        <p><b>Welcome to the Iowa Tech Open brought to you by the Technology Association of Iowa!</b></p>
-        <p>
-          This is your chance to squash some bugs and enter for a chance to win golf lessons by award winning golf instructor
-          <a href="https://kenschallgolf.com">Ken Schall</a>.
-        </p>
-        <p>
-          <b>How it works:</b> Click the button below and allow the web page to access your phone's camera, location, and motion
-          information. Once you're in, use your phone to locate bugs on and around the greens on the course. Click on the bug to be awarded
-          an entry into the drawing for golf lessons. Find all the bugs and get 18 chances to win!
-        </p>
-      </div>
+          <a-entity id="bug" gltf-model="#lady_bug" visible="false" toggle-visibility scale="6 6 6" change-model-on-click
+          position="0 0 0" animation="property: rotation; dur: 10000;
+          to: 0 360 0; loop: true"></a-entity>
+
+
+        </a-scene>
     </div>
-    <a id="start" href="./bug-hunter.html">Hunt Some Bugs!</a>
-  </body>
+</body>
+<a id="start" href="./form.html">Finish</a>
 </html>
