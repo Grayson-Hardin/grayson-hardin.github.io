@@ -26,12 +26,12 @@
   </div> -->
   
   <div id='gameplay'>
-    <a-scene bug-counter hot-cold-bar vr-mode-ui="enabled: false" style="margin: 0; overflow: hidden;">
+    <a-scene bug-counter hot-cold-bar vr-mode-ui="enabled: false" style="margin: 0; overflow: hidden;" cursor="rayOrigin: mouse">
       <a-camera id='camera' get-user-coords arjs-look-controls='smoothingFactor: 0.1'
         gps-projected-camera='gpsMinDistance: 5' rotation-reader>
         <!-- <a-text updateScoreboard id="score" scale=".3 .3 .3" position=".68 -.75 -2" value="0/18" color="#000000"></a-text> -->
         <!-- <a-entity cursor raycaster="far: 20; interval: 1000; objects: .clickable"></a-entity> -->
-
+<!-- 
         <a-entity 
         animation__click="property: scale; startEvents: click; easing: easeInCubic; dur: 150; from: 0.1 0.1 0.1; to: 1 1 1"
         animation__fusing="property: scale; startEvents: fusing; easing: easeInCubic; dur: 1500; from: 1 1 1; to: 0.1 0.1 0.1"
@@ -40,7 +40,7 @@
         position="0 0 -1"
         geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03"
         material="color: black; shader: flat">
-        </a-entity>
+        </a-entity> -->
         
       </a-camera>
 
