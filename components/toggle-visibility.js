@@ -71,11 +71,10 @@ AFRAME.registerComponent("toggle-visibility", {
       cookies.map((cookie) => {
         if (cookie.id === closestBug.id) {
           closestBug = {
-            visible: false,
             id: "",
             distance: "",
-            el: setAttribute("visible", true),
           };
+          el.setAttribute("visible", false);
           return false;
         }
       });
