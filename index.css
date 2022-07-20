@@ -1,0 +1,71 @@
+#instructions {
+    position: fixed; /* Sit on top of the page content */
+    display: block; /* Hidden by default */
+    width: 100%; /* Full width (cover the whole page) */
+    height: 100%; /* Full height (cover the whole page) */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    /* background-color: black; Black background with opacity */
+    /* opacity: 0.65 !important; */
+    cursor: pointer; /* Add a pointer on hover */
+  }
+
+  #start {
+    padding: 20px;
+    font-size: 5vw;
+    background-color: #015b79;
+    color: #ffffff;
+    border-color: #843c3c;
+    border-style: solid;
+    border-width: 10px;
+    border-radius: 50px;
+    position: absolute;
+    top: 95%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-decoration: none;
+  }
+
+  #logo {
+    position: absolute;
+    width: 80%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  #asdf {
+    font-size: 5vw;
+    font-family: sans-serif;
+    position: absolute;
+    width: 90%;
+    top: 15%;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    opacity: 1;
+  }
+
+  p {
+    opacity: 1;
+  }
+
+  a {
+    font-family: sans-serif;
+    color: white;
+  }
+
+  a:visited {
+    color: white;
+  }
+
+  #scene {
+    margin: 0;
+    overflow: hidden;
+  }
+
+  body {
+    background-image: url("assets/pictures/putting.jpg");
+    margin: 0;
+  }

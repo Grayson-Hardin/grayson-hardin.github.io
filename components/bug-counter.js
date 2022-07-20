@@ -28,8 +28,8 @@ AFRAME.registerComponent("bug-counter", {
         this.data.score = cookies.length;
         var newScore = "" + this.data.score + "/18";
       }
-
-      scoreBoard.setAttribute("text", "value", newScore);
+      document.getElementById("score").innerHTML = newScore
+      // scoreBoard.setAttribute("text", "value", newScore);
     });
   },
 });

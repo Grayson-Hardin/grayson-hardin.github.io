@@ -14,6 +14,7 @@ AFRAME.registerComponent("change-model-on-click", {
       el.removeAttribute("gltf-model");
       var id = el.getAttribute("id");
       setCookie(id, "squashed", 1);
+      console.log(document.cookie);
       el.emit("updateScoreboard", document.cookie.split(";").length) + "/18";
       var audio = new Audio("../assets/sounds/onClickSquish.mp3");
       audio.play();

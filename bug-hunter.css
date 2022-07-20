@@ -1,0 +1,80 @@
+.bug-icon {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    max-width: 11%;
+    max-height: 11%;
+  }
+  
+  .lt-logo {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    max-width: 8%;
+    max-height: 8%;
+  }
+  
+  /* 
+    #score {
+      position: fixed;
+      font-size: 30px;
+      color: "#015b79";
+      right: 0;
+      bottom: 0;
+  
+      } */
+  
+  #start {
+    font-size: 5vw;
+    background-color: #015b79;
+    color: #ffffff;
+    position: fixed;
+    top: 97.5%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-decoration: none;
+  }
+  
+  .footer {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 4.8%;
+    background-color: white;
+    /* color: white; */
+    text-align: center;
+  }
+  
+  .footer p {
+    position: fixed;
+    margin: auto;
+    width: 35%;
+    height: 4%;
+    right: 0;
+    bottom: 0;
+    font-size: 20px;
+    color: black;
+  }
+  
+  .header {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 4.8%;
+    background-color: white;
+    text-align: center;
+  }
+  
+  .header p {
+    color: black;
+    margin-top: 2%;
+    top: 0;
+  }
+  
+  /* a-scene{
+      margin: 0;
+      overflow: hidden;
+    }  */
+  
