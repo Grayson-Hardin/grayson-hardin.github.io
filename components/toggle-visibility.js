@@ -98,22 +98,22 @@ var closestBug = {
   distance: "",
 };
 
-// function resizeAccordingToDistanceFromBug(distanceFromObject, maximumDistance) {
-//   const maximumScale = 0.5;
-//   const minimumScale = 0.1;
+function resizeAccordingToDistanceFromBug(distanceFromObject, maximumDistance) {
+  const maximumScale = 0.5;
+  const minimumScale = 0.1;
 
-//   const scaleRange = maximumScale - minimumScale;
+  const scaleRange = maximumScale - minimumScale;
 
-//   const percentOfRange = 1 - distanceFromObject / maximumDistance;
+  const percentOfRange = 1 - distanceFromObject / maximumDistance;
 
-//   const scaleFactor = (minimumScale + scaleRange * percentOfRange).toFixed(2);
+  const scaleFactor = (minimumScale + scaleRange * percentOfRange).toFixed(2);
 
-//   const scale = `${scaleFactor} ${scaleFactor} ${scaleFactor}`;
+  const scale = `${scaleFactor} ${scaleFactor} ${scaleFactor}`;
 
-//   //  console.log(`Distance: ${distanceFromObject}\n
-//   //     Maximum Distance: ${maximumDistance}\n
-//   //     Scale Range: ${scaleRange}\n
-//   //     Percent of Range: ${percentOfRange}\n
-//   //     Scale Factor: ${scaleFactor}`);
-//   return scale;
-// }
+  //  console.log(`Distance: ${distanceFromObject}\n
+  //     Maximum Distance: ${maximumDistance}\n
+  //     Scale Range: ${scaleRange}\n
+  //     Percent of Range: ${percentOfRange}\n
+  //     Scale Factor: ${scaleFactor}`);
+  return scale;
+}
