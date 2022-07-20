@@ -31,18 +31,23 @@ AFRAME.registerComponent("toggle-visibility", {
       // );
 
       // Determine closest non-squished bug
-      // if (distanceFromObject < 100) {
-      //   if (closestBug.id === "" && isNotSquashed()) {
-      //     closestBug.id = element.id;
-      //     closestBug.distance = distanceFromObject;
-      //     element.emit("new-closest-bug", closestBug);
-      //   } else if (distanceFromObject < closestBug.distance && isNotSquashed()) {
-      //     closestBug.id = element.id;
-      //     closestBug.distance = distanceFromObject;
-
-      //     element.emit("new-closest-bug", closestBug);
-      //   }
-      // }
+      var x = closestBug.distance.toString();
+      if (distanceFromObject < 5) {
+        document.getElementById("closestBug").innerHTML = "In range! SQUASH!";
+      }
+      if (distanceFromObject < 100) {
+        if (closestBug.id === "" && isNotSquashed()) {
+          closestBug.id = element.id;
+          closestBug.distance = distanceFromObject;
+          element.emit("new-closest-bug", closestBug);
+          document.getElementById("closestBug").innerHTML = "Closest Bug: " + x.slice(0, 6);
+        } else if (distanceFromObject < closestBug.distance && isNotSquashed()) {
+          closestBug.id = element.id;
+          closestBug.distance = distanceFromObject;
+          element.emit("new-closest-bug", closestBug);
+          document.getElementById("closestBug").innerHTML = "Closest Bug: " + x.slice(0, 6);
+        }
+      }
 
       // var el = document.getElementById("header");
       // console.log(closestBug.distance);
@@ -61,22 +66,20 @@ AFRAME.registerComponent("toggle-visibility", {
       return distanceFromObject < maximumDistance;
     }
 
-    // function isNotSquashed() {
-    //   var cookies = document.cookie.split(";");
-    //   cookies.map((cookie) => {
-    //     if (cookie.id === closestBug.id) {
-    //       closestBug = {
-    //         id: "",
-    //         distance: "",
-    //       };
-    //       return false;
-    //     }
-    //   });
-    //   var x = closestBug.distance.toString();
-    //   document.getElementById("closestBug").innerHTML = "Closest Bug: " + x.slice(0, 6);
-    //   console.log(`closestBug is: id: ${closestBug.id} distance: ${closestBug.distance}`);
-    //   return true;
-    // }
+    function isNotSquashed() {
+      var cookies = document.cookie.split(";");
+      cookies.map((cookie) => {
+        if (cookie.id === closestBug.id) {
+          closestBug = {
+            visible: false,
+            id: "",
+            distance: "",
+          };
+          return false;
+        }
+      });
+      return true;
+    }
 
     // moved because it was not detecting metersBetween in the main.js file
     function metersBetween(lat1, lon1, lat2, lon2) {
