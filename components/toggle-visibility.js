@@ -15,11 +15,11 @@ AFRAME.registerComponent("toggle-visibility", {
       if (isVisible) {
         el.emit("visibility-change", true);
         el.setAttribute("visible", true);
-        // console.log("Visibility is ", isVisible)
+
       } else {
         el.emit("visibility-change", false);
         el.setAttribute("visible", false);
-        // console.log("You are far away, keep looking!");
+   
       }
     });
 
@@ -74,6 +74,7 @@ AFRAME.registerComponent("toggle-visibility", {
             visible: false,
             id: "",
             distance: "",
+            el: setAttribute("visible", true),
           };
           return false;
         }
