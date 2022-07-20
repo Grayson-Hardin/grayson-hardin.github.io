@@ -70,11 +70,12 @@ AFRAME.registerComponent("toggle-visibility", {
       var cookies = document.cookie.split(";");
       cookies.map((cookie) => {
         if (cookie.id === closestBug.id) {
+          el.setAttribute("visible", false);
           closestBug = {
             id: "",
             distance: "",
           };
-          el.setAttribute("visible", false);
+
           return false;
         }
       });
