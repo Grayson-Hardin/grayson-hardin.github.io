@@ -31,9 +31,6 @@
         gps-projected-camera='gpsMinDistance: 5' rotation-reader>
         <!-- <a-text updateScoreboard id="score" scale=".3 .3 .3" position=".68 -.75 -2" value="0/18" color="#000000"></a-text> -->
         <!-- <a-entity cursor raycaster="far: 20; interval: 1000; objects: .clickable"></a-entity> -->
-         
-        <a-image src="#crosshair" position="0 0 -1" scale=".2 .2 .2"></a-image>
-
         <a-entity 
         animation__click="property: scale; startEvents: click; easing: easeInCubic; dur: 150; from: 0.1 0.1 0.1; to: 1 1 1"
         animation__fusing="property: scale; startEvents: fusing; easing: easeInCubic; dur: 1500; from: 1 1 1; to: 0.1 0.1 0.1"
@@ -45,6 +42,8 @@
       <!-- <a-image src="assets/pictures/crosshair1.png" position="0 0 -1"></a-image> -->
         
       </a-camera>
+      <a-image src="#crosshair" position="0 0 -1" scale=".2 .2 .2"></a-image>
+
 
       <!-- <a-entity cursor="rayOrigin:mouse" cursor="fuseTimeout: 0;" ></a-entity> -->
 
